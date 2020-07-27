@@ -1,6 +1,7 @@
-<%= form_tag login_user_path, method: :post do%>
+<%= form_tag login_tutor_path, method: :post do%>
     <%= label_tag :username %><br>
-    <%= text_field_tag :name %>
+    <%= text_field_tag :username %>
+    <%= label_tag :password %><br>
     <%= password_field_tag :password %>
     <%= submit_tag "Log in"%>
 <% end%>
