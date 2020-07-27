@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   resources :tutors
   resources :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  root "/"
+  get '/login_tutor', to: 'tutor_sessions#new',as: :login_tutor
+  post '/login_tutor', to: 'tutor_sessions#create'
+
+  get '/login_user', to: 'user_sessions#new',as: :login_user
+  post '/login_user', to: 'user_sessions#create'
 end

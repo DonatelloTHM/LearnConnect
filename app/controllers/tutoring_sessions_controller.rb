@@ -1,2 +1,0 @@
-class TutoringSessionsController < ApplicationController
-end
