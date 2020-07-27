@@ -78,12 +78,8 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-  production:
-	<<: *default
-	adapter: postgresql
-	statement_limit: 200
-	host: postgresql.guebs.net
-	port: 5432
-	database: mod2_tutoring_service_production
-	username: mod2_tutoring_service
-	password: <%= ENV['MOD2_TUTORING_SERVICE_DATABASE_PASSWORD'] %>
+production:
+  <<: *default
+  database: mod2_tutoring_service_production
+  username: mod2_tutoring_service
+  password: <%= ENV['MOD2_TUTORING_SERVICE_DATABASE_PASSWORD'] %>

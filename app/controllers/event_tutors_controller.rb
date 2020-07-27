@@ -1,0 +1,2 @@
+class EventTutorsController < ApplicationController
+end
