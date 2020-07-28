@@ -100,7 +100,7 @@ class TutorsController < ApplicationController
     end
 
     def tutor_params
-        params.require(:tutor).permit(:username,:password,:password_confirmation,:first_name,:last_name,:age,:education_level,:subjects,:address,city_id:[:name,:state])
+        params.require(:tutor).permit(:username,:password,:password_confirmation,:first_name,:last_name,:age,:education_level,:subjects,:address,:photo,city_id:[:name,:state])
     end
 
     def cities_states

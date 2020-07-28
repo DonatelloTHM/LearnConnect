@@ -5,6 +5,7 @@ class Tutor < ApplicationRecord
   has_many :tutoring_sessions
   has_many :users, through: :tutoring_sessions 
   belongs_to :city
+  has_one_attached :photo
 
 
   def city_id=(arr)

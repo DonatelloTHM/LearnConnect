@@ -1,4 +1,4 @@
-<%= simple_form_for :search, url: tutors_path, method: "GET", html: { class: 'form-inline' } do |f| %>
+<%= simple_form_for :search, url: tutors_path, method: "GET", html: { class: 'form-horizontal' } do |f| %>
   <%= f.input :state, input_html: {value: ""},input_html: {list:"states_autocomplete" }, required: false%>  
             <datalist id="states_autocomplete">
                 <% City.all.map{|ins| ins.state}.uniq.each do |state| %>
@@ -17,21 +17,36 @@
 <br>
 <hr>
 
+
+
+
 <% if !@tutors.nil?%>
     <% if !@tutors.empty?%>
+    <div class="tutors_flexes">
         <% @tutors.each do |tutor| %>
-        <uL>
-        <li>Name: <%= tutor.full_name %></li>
-        <li>Age: <%= tutor.age %></li>
-        <li>City: <%= tutor.city.name %></li>
-        <li>State: <%= tutor.city.state %></li>
-        <li>Subjects: <%= tutor.subjects %></li>
-        <hr>
-        </ul>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                    <% if tutor.photo.attached? %>
+                        <img src="<%= (url_for(tutor.photo)) %>" alt="Avatar" style="width:300px;height:300px;">
+                    <% else%>
+                        <img src="https://fertilitynetworkuk.org/wp-content/uploads/2017/01/Facebook-no-profile-picture-icon-620x389.jpg" alt="Avatar" style="width:300px;height:300px;">
+                    <% end%>
+                    </div>
+                    <div class="flip-card-back">
+                    <h1><%= tutor.full_name %></h1>
+                    <p><%= tutor.age %></p>
+                    <p><%= tutor.city.name %></p>
+                    </div>
+                </div>
+            </div>
         <% end%>
+        </div>
     <% else %>
         <h1>There's nothing to show!</h1>
     <% end %>
 <% else %>
     <h1>There's nothing to show!</h1>
 <% end%>
+
+

@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :tutors, through: :tutoring_sessions
   has_many :events
   belongs_to :city
+  has_one_attached :photo
   
 
   def city_id=(arr)

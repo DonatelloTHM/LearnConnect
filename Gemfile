@@ -22,6 +22,9 @@ gem 'city-state'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+gem "simple_calendar", "~> 2.0"
+
+gem 'bootstrap', '~> 4.5.0'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
