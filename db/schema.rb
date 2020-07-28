@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 2020_07_27_210232) do
   create_table "tutoring_sessions", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "tutor_id", null: false
+    t.datetime "start_time"
+    t.datetime "end_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["tutor_id"], name: "index_tutoring_sessions_on_tutor_id"
@@ -57,7 +59,7 @@ ActiveRecord::Schema.define(version: 2020_07_27_210232) do
     t.string "first_name"
     t.string "last_name"
     t.string "address"
-    t.string "subject"
+    t.string "subjects"
     t.integer "age"
     t.string "education_level"
     t.integer "city_id"

@@ -6,7 +6,7 @@ class CreateTutors < ActiveRecord::Migration[6.0]
       t.string :first_name
       t.string :last_name
       t.string :address
-      t.string :subject
+      t.string :subjects
       t.integer :age
       t.string :education_level
       t.integer :city_id
