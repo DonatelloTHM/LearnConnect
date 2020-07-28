@@ -1,0 +1,64 @@
+<h1> Create User </h1>
+<% if @errors %>
+    <ul>
+        <% @errors.each do |error|%>
+            <li style="color:blue;"><%= error %></li>
+        <%end %>
+    </ul>
+<% end%>
+
+<%=form_for @tutor do |f|%>
+    <div class="tutor_auth">
+        <%= f.label :username%>
+        <%= f.text_field :username %>
+        <br>
+        <%= f.label :password%>
+        <%= f.password_field :password %>
+        <br>
+        <%= f.label :password_confirmation%>
+        <%= f.password_field :password_confirmation %>
+        <br>
+    </div>
+    <br>
+    <br>
+    <div class="tutor_info">
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name %>
+        <br>
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name %>
+        <br>
+        <%= f.label :age %>
+        <%= f.number_field :age %>
+        <br>
+        <%= f.label :education_level %>
+        <%= f.text_field :education_level %>
+        <br>
+        <%= f.label :subject %>
+        <%= f.text_field :subject%>
+        <br>
+        <%= f.label :address %>
+        <%= f.text_field :address%>
+        <br>
+
+        <div class="city_info">
+            <%= f.fields_for :city_id do |c| %>
+                <%= c.label :name, "City"%>
+                <%= c.text_field :name, value:"#{@city.name}", list: "cities_autocomplete" %>
+                <datalist id="cities_autocomplete">
+                    <% @cities.each do |city| %>
+                    <option value="<%= city %>">
+                    <% end %>
+                </datalist>
+                <%= c.label :state %>
+                <%= c.text_field :state,value:"#{@city.state}", list: "state_autocomplete" %>
+                <datalist id="state_autocomplete">
+                    <% @states.each do |state| %>
+                    <option value="<%= state %>">
+                    <% end %>
+                </datalist>
+            <% end%>
+            <%= f.submit %>
+            <% end%>
+        </div>
+    </div>
