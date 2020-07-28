@@ -1,0 +1,37 @@
+<%= simple_form_for :search, url: tutors_path, method: "GET", html: { class: 'form-inline' } do |f| %>
+  <%= f.input :state, input_html: {value: ""},input_html: {list:"states_autocomplete" }, required: false%>  
+            <datalist id="states_autocomplete">
+                <% City.all.map{|ins| ins.state}.uniq.each do |state| %>
+                <option value="<%= state %>">
+                <% end %>
+            </datalist>
+ <%= f.input :city, input_html: {value: ""},input_html: {list:"cities_autocomplete" }, required: false%>  
+            <datalist id="cities_autocomplete">
+                <% City.all.map{|ins| ins.name}.uniq.each do |city| %>
+                <option value="<%= city %>">
+                <% end %>
+            </datalist> 
+<%= f.input :subjects, label: "Subjects",  collection: Tutor.get_subjects, as: :check_boxes, required: false %>
+  <%= f.submit "Search", class: "btn btn-primary" %>
+<% end %>
+<br>
+<hr>
+
+<% if !@tutors.nil?%>
+    <% if !@tutors.empty?%>
+        <% @tutors.each do |tutor| %>
+        <uL>
+        <li>Name: <%= tutor.full_name %></li>
+        <li>Age: <%= tutor.age %></li>
+        <li>City: <%= tutor.city.name %></li>
+        <li>State: <%= tutor.city.state %></li>
+        <li>Subjects: <%= tutor.subjects %></li>
+        <hr>
+        </ul>
+        <% end%>
+    <% else %>
+        <h1>There's nothing to show!</h1>
+    <% end %>
+<% else %>
+    <h1>There's nothing to show!</h1>
+<% end%>
