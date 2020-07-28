@@ -5,6 +5,12 @@ class Tutor < ApplicationRecord
   has_many :tutoring_sessions
   has_many :users, through: :tutoring_sessions 
   belongs_to :city
+  
+  def city_id=(arr)
+
+    city=City.find_or_create_by(name: arr[:name],state: arr[:state])
+    self.city=city
+  end
 
 
   def full_name
