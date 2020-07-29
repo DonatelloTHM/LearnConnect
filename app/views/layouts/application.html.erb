@@ -10,6 +10,15 @@
   </head>
 
   <body>
+      <% if current_tutor.photo.attached? %>
+        <img class="thumbnailphoto" src="<%= (url_for(current_tutor.photo)) %>" alt="Avatar">
+    <% else%>
+        <img class="thumbnailphoto" src="https://fertilitynetworkuk.org/wp-content/uploads/2017/01/Facebook-no-profile-picture-icon-620x389.jpg" alt="Avatar">
+  <% end%>
+    
+    
+    <main>
     <%= yield %>
+    </main>
   </body>
 </html>

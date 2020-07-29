@@ -22,9 +22,9 @@
  @import "bootstrap";
 
  body{
-   background-color:#e8d4b4;
+   background-color:#eeeeee;
  }
- img {
+ .avatar_photo {
         width: 200px; /* width of container */
         height: 200px; /* height of container */
         object-fit: cover;
@@ -73,10 +73,13 @@
   
   /* Style the back side */
   .flip-card-back {
-    background-color: #1f4068;
+    background-color: #fd5e53;
     color: white;
     transform: rotateY(180deg);
     padding:30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }   
 
   .tutors_flexes{
@@ -89,8 +92,8 @@
   }
 
   .form_container{
-    background-color: #ececec;
-    
+    background-color: #fbf9fa;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
     padding:30px;
     padding-bottom: 10px;
   }
@@ -99,6 +102,19 @@
     font-size: 14px;
     margin-right:12px;
     background-color: #ff5f40;
+   color: honeydew;
+   padding:10px;
+   padding-bottom: 2px;
+   padding-right: 14px;
+   margin-bottom: 10px;
+   transition-duration: 0.4s;
+  }
+
+  .checkbox:hover{
+    display: flex;
+    font-size: 14px;
+    margin-right:12px;
+    background-color: #a1c45c;
    color: honeydew;
    padding:10px;
    padding-bottom: 2px;
@@ -124,7 +140,7 @@
  }
 
  #clear_filter{
-   margin-left: 10px;
+   margin-left: 15px;
  }
  .check_boxes{
    display: flex;
@@ -147,3 +163,103 @@
  #city_filter{
    display:flex;
  }
+
+
+ .my_buttons {
+  background-color: #a1c45a;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+}
+
+.my_buttons:hover {
+  background-color: #8bad45;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+}
+
+.my_buttons_1 {   
+  background-color: #fd5e53;  
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+}
+
+.my_buttons_1:hover {   
+  background-color: #f8776d;  
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+}
+
+.my_buttons_2 {   
+  background-color: #a1c45c;  
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+}
+
+.my_buttons_2:hover {   
+  background-color: #c2e778;  
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+}
+
+// .main_ul{
+//   font-size:20px;
+//   padding: 2rem;
+//   color:white;
+//   background: #3db6e6;
+//   position:fixed;
+//   right:1rem;
+//   top:20;
+//   bottom: 0;
+//   list-style: none;
+//   text-align: center;
+// }
+
+.thumbnailphoto {
+  border-radius: 50%;
+  width: 100px; /* width of container */
+  height: 100px; /* height of container */
+  object-fit: cover;
+  position:fixed;
+  right:1rem;
+  top:20;
+  bottom: 1rem;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+  z-index: 1;
+}
+
