@@ -1,0 +1,27 @@
+@import "bootstrap";
+
+
+
+  html {
+    background: url("student-group.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    box-shadow: inset 0 0 0 1000px rgba(0,0,0,.2);
+  }
+  .tutoringapp{
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform: translate(-50%,-50%);
+  }
+
+  #tutoringapp{
+      font-size: 120px;
+      color: gainsboro;
+  }
+  #learnteach{
+      text-align: center;
+      color: gainsboro;
+  }
