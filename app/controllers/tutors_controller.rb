@@ -12,6 +12,10 @@ class TutorsController < ApplicationController
             the_city=params[:search][:city]
             all_subjects=params[:search][:subjects]
 
+            flash[:state]=the_state
+            flash[:city]=the_city
+            flash[:subjects]=all_subjects
+
             if(!the_state.empty? && !the_city.empty? && !all_subjects.reject { |c| c.empty?}.empty?)
                 all_states=City.where("state ILIKE ?", the_state)
                 all_cities=all_states.where("name ILIKE ?", the_city)
@@ -90,7 +94,7 @@ class TutorsController < ApplicationController
     end
 
     def show
-        return head(:forbidden) unless @tutor == current_tutor
+        # return head(:forbidden) unless @tutor == current_tutor
         
     end
 
