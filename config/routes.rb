@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :tutors
   resources :users
 
+  root 'home#index'
 
   get '/login_tutor', to: 'tutor_sessions#new',as: :login_tutor
   post '/login_tutor', to: 'tutor_sessions#create'
