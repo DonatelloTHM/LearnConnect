@@ -22,4 +22,15 @@ class Tutor < ApplicationRecord
   def full_name
     self.first_name+" "+self.last_name
   end
+
+
+
+
+  def show_tutoring_sessions
+    hours=["1200","1330","1500","1630","1800"]
+
+
+  end
+
+
 end

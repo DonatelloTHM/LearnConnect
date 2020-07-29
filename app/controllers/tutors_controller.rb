@@ -89,13 +89,20 @@ class TutorsController < ApplicationController
         end
     end
 
+    def schedule_session
+        @tutoring_session=TutoringSession.create(tutoring_session_params)
+    end
+
+    def cancel_session
+        byebug
+    end
+    
     def edit
        @city=City.find_by(id:@tutor.city_id) 
     end
 
     def show
         # return head(:forbidden) unless @tutor == current_tutor
-        
     end
 
     private
@@ -110,6 +117,10 @@ class TutorsController < ApplicationController
     def cities_states
         @cities=CS.states(:us).keys.flat_map { |state| CS.cities(state, :us) }.uniq
         @states=CS.states(:us).values
+    end
+
+    def tutoring_session_params
+        params.require(:tutoring_sessions).permit(:user_id,:tutor_id,:start_time,:duration)
     end
 
 end

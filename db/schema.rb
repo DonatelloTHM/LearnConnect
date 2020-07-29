@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2020_07_28_211013) do
     t.bigint "user_id", null: false
     t.bigint "tutor_id", null: false
     t.datetime "start_time"
-    t.datetime "end_time"
+    t.integer "duration"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["tutor_id"], name: "index_tutoring_sessions_on_tutor_id"
