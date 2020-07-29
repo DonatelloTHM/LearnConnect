@@ -24,8 +24,8 @@
 <%= f.input :subjects,  collection: Tutor.get_subjects, as: :check_boxes, input_html: {class: "checkbox-inline"},item_label_class: 'check_labels',label: false, required: false %>
 <hr>
  <div class="clear_submit_buttons">
-  <%= f.submit "Search", class: "btn btn-primary" %>
-  <%= button_to "Clear Filter", tutors_path, method: :get ,class: "btn btn-primary",id: "clear_filter"%>
+  <%= f.submit "Search", class: "my_buttons" %>
+  <%= button_to "Clear Filter", tutors_path, method: :get ,class: "my_buttons_1",id: "clear_filter"%>
   </div>
 <% end %>
 
@@ -42,18 +42,18 @@
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
                     <% if tutor.photo.attached? %>
-                        <img src="<%= (url_for(tutor.photo)) %>" alt="Avatar" style="width:200px;height:200px;">
+                        <img class="avatar_photo" src="<%= (url_for(tutor.photo)) %>" alt="Avatar" style="width:200px;height:200px;">
                         <h4 class="tutors_names"><%= tutor.full_name %></h4>
                     <% else%>
-                        <img src="https://fertilitynetworkuk.org/wp-content/uploads/2017/01/Facebook-no-profile-picture-icon-620x389.jpg" alt="Avatar" style="width:200px;height:200px;">
+                        <img class="avatar_photo" src="https://fertilitynetworkuk.org/wp-content/uploads/2017/01/Facebook-no-profile-picture-icon-620x389.jpg" alt="Avatar" style="width:200px;height:200px;">
                         <h4 class="tutors_names"><%= tutor.full_name %></h4>
                     <% end%>
                     </div>
                     <div class="flip-card-back">
                     <h5><%= tutor.full_name %></h5>
                     <p><%= tutor.age %></p>
-                    <p><%= tutor.city.name %></p>
-                    <%= button_to "Schedule",tutor ,class: "btn btn-primary btn-sm" , method: :get%>
+                    <p><%= tutor.city.name %>, <%= tutor.city.state_code %></p>
+                    <%= button_to "Schedule",tutor ,class: "my_buttons_2" , method: :get%>
                     </div>
                 </div>
             </div>
