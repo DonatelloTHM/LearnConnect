@@ -1,21 +1,35 @@
-<%= simple_form_for :search, url: tutors_path, method: "GET", html: { class: 'form-horizontal' } do |f| %>
-  <%= f.input :state, input_html: {value: ""},input_html: {list:"states_autocomplete" }, required: false%>  
+<div class="form_container"><%= simple_form_for :search, url: tutors_path, method: "GET", html: { class: 'form-horizontal form-group' } do |f| %>
+    <div class="city_state_filter">
+    <div id="state_filter">
+    <%= f.label :state , required: false ,class:"mr-3" %>
+    <%= f.input :state, input_html: {value: ""},input_html: {list:"states_autocomplete"},label: false ,required: false%>  
             <datalist id="states_autocomplete">
                 <% City.all.map{|ins| ins.state}.uniq.each do |state| %>
                 <option value="<%= state %>">
                 <% end %>
             </datalist>
- <%= f.input :city, input_html: {value: ""},input_html: {list:"cities_autocomplete" }, required: false%>  
+            </div>
+    <div id="city_filter">
+    <%= f.label :city,required:false, class:"mr-3" %>
+    <%= f.input :city, input_html: {value: ""},input_html: {list:"cities_autocomplete"},label:false, required: false%>  
             <datalist id="cities_autocomplete">
                 <% City.all.map{|ins| ins.name}.uniq.each do |city| %>
                 <option value="<%= city %>">
                 <% end %>
             </datalist> 
-<%= f.input :subjects, label: "Subjects",  collection: Tutor.get_subjects, as: :check_boxes, required: false %>
-  <%= f.submit "Search", class: "btn btn-primary" %>
-<% end %>
-<br>
+            </div>
+    </div>
+    <hr>
+    <%=f.label :subjects ,required:false  %>
+<%= f.input :subjects,  collection: Tutor.get_subjects, as: :check_boxes, input_html: {class: "checkbox-inline"},item_label_class: 'check_labels',label: false, required: false %>
 <hr>
+ <div class="clear_submit_buttons">
+  <%= f.submit "Search", class: "btn btn-primary" %>
+  <%= button_to "Clear Filter", tutors_path, method: :get ,class: "btn btn-primary",id: "clear_filter"%>
+  </div>
+<% end %>
+
+</div>
 
 
 
@@ -28,15 +42,18 @@
                 <div class="flip-card-inner">
                     <div class="flip-card-front">
                     <% if tutor.photo.attached? %>
-                        <img src="<%= (url_for(tutor.photo)) %>" alt="Avatar" style="width:300px;height:300px;">
+                        <img src="<%= (url_for(tutor.photo)) %>" alt="Avatar" style="width:200px;height:200px;">
+                        <h4 class="tutors_names"><%= tutor.full_name %></h4>
                     <% else%>
-                        <img src="https://fertilitynetworkuk.org/wp-content/uploads/2017/01/Facebook-no-profile-picture-icon-620x389.jpg" alt="Avatar" style="width:300px;height:300px;">
+                        <img src="https://fertilitynetworkuk.org/wp-content/uploads/2017/01/Facebook-no-profile-picture-icon-620x389.jpg" alt="Avatar" style="width:200px;height:200px;">
+                        <h4 class="tutors_names"><%= tutor.full_name %></h4>
                     <% end%>
                     </div>
                     <div class="flip-card-back">
-                    <h1><%= tutor.full_name %></h1>
+                    <h5><%= tutor.full_name %></h5>
                     <p><%= tutor.age %></p>
                     <p><%= tutor.city.name %></p>
+                    <%= button_to "Schedule",tutor ,class: "btn btn-primary btn-sm" , method: :get%>
                     </div>
                 </div>
             </div>

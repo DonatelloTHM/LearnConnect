@@ -11,7 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
 
- 
+
  */
  /* .square {
     position: relative;
@@ -21,9 +21,12 @@
  } */
  @import "bootstrap";
 
+ body{
+   background-color:#e8d4b4;
+ }
  img {
-        width: 300px; /* width of container */
-        height: 300px; /* height of container */
+        width: 200px; /* width of container */
+        height: 200px; /* height of container */
         object-fit: cover;
     }
 
@@ -31,9 +34,10 @@
  /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .flip-card {
     margin: 20px;
+    margin-bottom:40px;
     background-color: transparent;
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 230px;
     perspective: 1000px; /* Remove this if you don't want the 3D effect */
   }
   
@@ -69,14 +73,77 @@
   
   /* Style the back side */
   .flip-card-back {
-    background-color: dodgerblue;
+    background-color: #1f4068;
     color: white;
     transform: rotateY(180deg);
+    padding:30px;
   }   
 
   .tutors_flexes{
+    margin-left: 20px;
+    margin-top: 10px;
     display: flex;
     flex-wrap: wrap;
     padding:4px;
     /* margin: -20px 0 0 0; */
   }
+
+  .form_container{
+    background-color: #ececec;
+    
+    padding:30px;
+    padding-bottom: 10px;
+  }
+  .checkbox{
+    display: flex;
+    font-size: 14px;
+    margin-right:12px;
+    background-color: #ff5f40;
+   color: honeydew;
+   padding:10px;
+   padding-bottom: 2px;
+   padding-right: 14px;
+   margin-bottom: 10px;
+  }
+
+  .checkbox label, .checkbox input[type=checkbox]{
+    margin-left: 5px;
+}
+
+ .tutors_names{
+   font-size: 16px;
+   color:white;
+   padding:10px;
+   background-color: #222831;
+ }
+
+ .clear_submit_buttons{
+   padding-top: 10px;
+   display:flex;
+   flex-wrap: wrap;
+ }
+
+ #clear_filter{
+   margin-left: 10px;
+ }
+ .check_boxes{
+   display: flex;
+   flex-wrap: wrap;
+   flex-direction: row;
+   
+ }
+
+ .city_state_filter{
+   display:flex;
+   flex-wrap: wrap;
+ }
+
+ #state_filter{
+   margin-right: 30px;
+   display: flex;
+   margin-bottom: 5px;
+ }
+
+ #city_filter{
+   display:flex;
+ }
