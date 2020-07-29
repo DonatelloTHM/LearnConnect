@@ -21,9 +21,30 @@
  } */
  @import "bootstrap";
 
+ :root {
+  font-size: 16px;
+  font-family: 'Open Sans';
+  --text-primary: #b6b6b6;
+  --text-secondary: #ececec;
+  --bg-primary: #3c4245;
+  --bg-secondary: #4db2f5;
+  --transition-speed: 600ms;
+}
+
  body{
    background-color:#eeeeee;
  }
+
+
+ body::-webkit-scrollbar{
+  width:0.5rem;
+}
+body::-webkit-scrollbar-track{
+  background:#1e1e24;
+}
+body::-webkit-scrollbar-thumb{
+  background: #f8776d
+}
  .avatar_photo {
         width: 200px; /* width of container */
         height: 200px; /* height of container */
@@ -49,11 +70,13 @@
     text-align: center;
     transition: transform 0.8s;
     transform-style: preserve-3d;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
   }
   
   /* Do an horizontal flip when you move the mouse over the flip box container */
   .flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
   }
   
   /* Position the front and back side */
@@ -63,12 +86,14 @@
     height: 100%;
     -webkit-backface-visibility: hidden; /* Safari */
     backface-visibility: hidden;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
   }
   
   /* Style the front side (fallback if image is missing) */
   .flip-card-front {
     background-color: #bbb;
     color: black;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
   }
   
   /* Style the back side */
@@ -80,6 +105,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
   }   
 
   .tutors_flexes{
@@ -203,14 +229,10 @@
 
 .my_buttons_1:hover {   
   background-color: #f8776d;  
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  transition-duration: 0.4s;
+}
+
+.my_buttons_1:active {   
+  background-color: #6b2b26;  
 }
 
 .my_buttons_2 {   
@@ -227,14 +249,6 @@
 
 .my_buttons_2:hover {   
   background-color: #c2e778;  
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  transition-duration: 0.4s;
 }
 
 // .main_ul{
@@ -262,4 +276,54 @@
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
   z-index: 1;
 }
+.tutoring_sessions_times{
+  display: flex;
+  background-color: #ffffff;
+  padding: 20px;
+  flex-wrap: wrap;
+  color:#888888;
+  justify-content: space-between;
+  margin-left:40px;
+  margin-right:40px;
+  // margin-bottom:10px;
+}
 
+.tutoring_sessions_times:nth-child(odd){
+  background-color: #f4f4f4;
+  color:#323232;
+}
+
+.day_of_week{
+  padding:20px;
+  display:flex;
+  justify-content: center;
+  color:white;
+  background-color:#1cb3c8 ;
+  margin-top: 40px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
+}
+
+.reserved_by{
+  color:#eb4559;
+  font-size:30px;
+  align-self: center;
+}
+.timeslot_passed{
+  color:#e6e6e6;
+}
+
+.Tutors_nothing_show{
+  display:flex;
+  justify-content:center;
+  padding:40px;
+  background-color: #e8505b;
+  color:white;
+}
+
+.cancel_by_me{
+  color:#e8505b;
+}
+
+.reserved_by_you{
+  color:#e6e6e6;
+}

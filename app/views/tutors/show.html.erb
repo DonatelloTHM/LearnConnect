@@ -1,5 +1,43 @@
 <h1><%= @tutor.full_name %></h1>
 
-<%= week_calendar number_of_weeks: 2 do |date| %>
-  <%= date %>
-<% end %>
+<% n=1 %>
+<% d=Date.today%>
+<% while n<=8 do %>
+<div class="day_of_week">
+<% if n==1%>
+<h1>Today</h1>
+<%else%>
+<h1><%= d.strftime("%A") %></h1>
+<% end%>
+</div>
+<% @tutor.show_tutoring_sessions.each do |hour|%>
+        <% h=hour[0,2] %>
+        <% m=hour[2,4]%>
+        <div class="tutoring_sessions_times">
+        <% start_hour=DateTime.new(d.year,d.month,d.day,h.to_i,m.to_i) %>
+        <% timenow=DateTime.now %>
+        <% timenow=DateTime.new(timenow.year,timenow.month,timenow.day,timenow.hour,timenow.min) %>
+        <% checked_value=TutoringSession.find_by(start_time:start_hour,tutor_id:@tutor.id ) %>
+                    <% if start_hour >= timenow%>
+                        <% if checked_value%>
+                            <% if checked_value.user==current_user%>
+                            <h1 class="cancel_by_me"><%=h+":"+m %></h1>
+                            <h1 class="reserved_by_you">Reserved by You</h1>
+                            <%= button_to "Cancel", cancel_session_path, method: :post,params:{tutoring_session_id: checked_value.id},class:"my_buttons_1"%>
+                            <% else%>
+                            <h1><%=h+":"+m %></h1>
+                            <h1 class="reserved_by">Reserved by <%= checked_value.user.first_name %></h1>
+                            <% end%>
+                        <% else%>
+                        <h1><%=h+":"+m %></h1>
+                            <%= button_to "Schedule", schedule_session_path, method: :post,params:{tutoring_sessions:{user_id: current_user.id,tutor_id:@tutor.id , start_time:start_hour, duration:60  }},class:"my_buttons_1"%>
+                        <% end%>
+                    <% else%>
+                    <h1><%=h+":"+m %></h1>
+                        <h1 class="timeslot_passed"> This timeslot passed.</h1>
+                    <% end%>
+        </div>
+<% end%>
+<% d+=1%>
+<% n+=1 %>
+<% end%>
