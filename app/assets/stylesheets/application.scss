@@ -21,9 +21,30 @@
  } */
  @import "bootstrap";
 
+ :root {
+  font-size: 16px;
+  font-family: 'Open Sans';
+  --text-primary: #b6b6b6;
+  --text-secondary: #ececec;
+  --bg-primary: #3c4245;
+  --bg-secondary: #4db2f5;
+  --transition-speed: 600ms;
+}
+
  body{
    background-color:#eeeeee;
  }
+
+
+ body::-webkit-scrollbar{
+  width:0.5rem;
+}
+body::-webkit-scrollbar-track{
+  background:#1e1e24;
+}
+body::-webkit-scrollbar-thumb{
+  background: #f8776d
+}
  .avatar_photo {
         width: 200px; /* width of container */
         height: 200px; /* height of container */
@@ -49,11 +70,13 @@
     text-align: center;
     transition: transform 0.8s;
     transform-style: preserve-3d;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
   }
   
   /* Do an horizontal flip when you move the mouse over the flip box container */
   .flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
   }
   
   /* Position the front and back side */
@@ -63,12 +86,14 @@
     height: 100%;
     -webkit-backface-visibility: hidden; /* Safari */
     backface-visibility: hidden;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
   }
   
   /* Style the front side (fallback if image is missing) */
   .flip-card-front {
     background-color: #bbb;
     color: black;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
   }
   
   /* Style the back side */
@@ -80,6 +105,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
   }   
 
   .tutors_flexes{
@@ -203,14 +229,10 @@
 
 .my_buttons_1:hover {   
   background-color: #f8776d;  
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  transition-duration: 0.4s;
+}
+
+.my_buttons_1:active {   
+  background-color: #6b2b26;  
 }
 
 .my_buttons_2 {   
@@ -227,14 +249,6 @@
 
 .my_buttons_2:hover {   
   background-color: #c2e778;  
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  transition-duration: 0.4s;
 }
 
 // .main_ul{
