@@ -1,3 +1,4 @@
+
 <div class="container my-5">
   <div class="row">
     <div class="col-md-4">
@@ -5,6 +6,9 @@
     <div class="card col-md-3 style="width: 18rem;">
       <%= form_tag("/login_user", method: "post", class: "my_class") do %>   
         <h3 class="card-title my-4 mx-3 text-primary font-bold">Log in</h3>
+        <% if flash[:notice] %>
+          <%= flash[:notice] %>
+        <% end %>
         <div class="form-group">
           <div class="col-md-12 mb-3">
             <%= label_tag :username %>

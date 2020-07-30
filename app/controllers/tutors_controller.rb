@@ -89,6 +89,7 @@ class TutorsController < ApplicationController
     
     def edit
        @city=City.find_by(id:@tutor.city_id) 
+       @errors=flash[:errors]
     end
 
     def show
