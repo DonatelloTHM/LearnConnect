@@ -9,8 +9,8 @@ class UsersController < ApplicationController
     end
 
     def create
-        @user=User.create(user_params)
-        if @user.valid?
+        @user=User.new(user_params)
+        if @user.save
             log_user_in(@user)
             redirect_to @user
         else
@@ -23,15 +23,12 @@ class UsersController < ApplicationController
 
     end
 
-
-
-
     private 
     def find_user_id
         @user=User.find(params[:id])
     end
 
     def user_params
-        params.require(:user).permit(:username,:password,:password_confirmation,:first_name,:last_name,:age,:occupation,:grade,:photo,city_id:[:name,:state])
+        params.require(:user).permit(:username,:password,:password_confirmation,:first_name,:last_name,:age,:occupation,:grade,:address,:photo,city_id:[:name,:state])
     end
 end

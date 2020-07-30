@@ -1,5 +1,13 @@
+<%= @user.full_name %>
+
+<button type="button" class="btn btn-outline-success my-2 my-sm-0"><%= link_to "Log Out", user_logout_path, method: :delete %> </button>
+
+
+
 <% if @user.photo.attached? %>
 <div class="square">
-<img src="<%= (url_for(@user.photo)) %>">
+<img src="<%= (url_for(@user.photo)) %>" height=300 >
 </div>
 <% end%>
+
+
