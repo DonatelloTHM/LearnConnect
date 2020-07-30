@@ -30,11 +30,13 @@
 <% d=Date.today%>
 <% while n<=8 do %>
 <div class="day_of_week">
+<h4 style="align-self:center;">Timeslots</h4>
 <% if n==1%>
 <h1>Today</h1>
 <%else%>
 <h1><%= d.strftime("%A") %></h1>
 <% end%>
+<h4 style="align-self:center;"><%= d %></h4>
 </div>
 <% @tutor.show_tutoring_sessions.each do |hour|%>
         <% h=hour[0,2] %>
