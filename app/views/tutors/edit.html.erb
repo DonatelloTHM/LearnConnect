@@ -7,12 +7,8 @@
         <%end %>
     </ul>
 <% end%>
-
 <%=form_for @tutor do |f|%>
     <div class="tutor_auth">
-        <%= f.label :username%>
-        <%= f.text_field :username %>
-        <br>
         <%= f.label :password%>
         <%= f.password_field :password %>
         <br>
@@ -41,7 +37,10 @@
         <%= f.label :address %>
         <%= f.text_field :address%>
         <br>
+<<<<<<< HEAD
+=======
     
+>>>>>>> 874896545025a3892bd4d772812603cca4ea2746
         <div class="city_info">
             <%= f.fields_for :city_id do |c| %>
                 <%= c.label :name, "City"%>
