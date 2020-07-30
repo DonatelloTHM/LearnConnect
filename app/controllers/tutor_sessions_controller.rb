@@ -9,10 +9,10 @@ class TutorSessionsController < ApplicationController
         if @tutor && @tutor.authenticate(params[:password])
             log_tutor_in(@tutor)
             flash[:notice]="Welcome #{@tutor.full_name}, Login was succesful."
-            redirect_to @tutor
+            redirect_to my_page_path(@tutor)
         else
             flash[:notice]="Wrong credentials!"
-            redirect_to login_tutor
+            redirect_to login_tutor_path
         end
     end
 

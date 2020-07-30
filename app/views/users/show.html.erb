@@ -1,4 +1,4 @@
-
+<hr>
 <div class="tutors_schedule_page">
 <div class="tutors_schedule_inner_page">
 <% if @user.photo.attached? %>
@@ -33,7 +33,6 @@
             <% else%>
                 <img class="avatar_photo_smaller" src="https://fertilitynetworkuk.org/wp-content/uploads/2017/01/Facebook-no-profile-picture-icon-620x389.jpg" alt="Avatar">
             <% end%>
-            <% byebug%>
             <h1><%= tutoring_session.tutor.full_name %></h1></div>
             <h1><%= tutoring_session.start_time.utc.strftime("%A, ") %> at <%= tutoring_session.start_time.utc.strftime("%H:%M") %></h1>
             <%= button_to "Cancel", cancel_session_path, method: :post,params:{tutoring_session_id: tutoring_session.id},class:"cancel_button"%>

@@ -10,6 +10,20 @@
   </head>
 
   <body>
+    <% if session[:user_id]%>
+    <ul class="navbar_man">
+        <li><%= link_to "Home", tutors_path %></li>
+        <li><%= link_to "My Page", current_user %></li>
+        <li class="logout" style="margin-left:auto;"><%=link_to "Log Out", user_logout_path , method: :delete%></li>
+    </ul>
+    <% elsif session[:tutor_id] %>
+    <ul class="navbar_man">
+        <li><%= link_to "My Page", my_page_path(current_tutor) %></li>
+        <li class="logout" style="margin-left:auto;"><%=link_to "Log Out", logout_path , method: :delete%></li>
+    </ul>
+    <% end%>
+
+
       <% if current_tutor %>
             <% if current_tutor.photo.attached? %>
               <img class="thumbnailphoto" src="<%= (url_for(current_tutor.photo)) %>" alt="Avatar">
