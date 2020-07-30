@@ -1,8 +1,15 @@
+
 <%= @user.full_name %>
 
 <button type="button" class="btn btn-outline-success my-2 my-sm-0"><%= link_to "Log Out", user_logout_path, method: :delete %> </button>
+<button type="button" class="btn btn-outline-success my-2 my-sm-0"><%= link_to "View Tutors", tutors_path, method: :get %> </button>
+<button type="button" class="btn btn-outline-success my-2 my-sm-0"><%= link_to "Edit Profile", edit_user_path, method: :get %> </button>
 
 
+<p>My tutoring sessions: </p>
+<% @user.tutoring_sessions.each do |sesh| %>
+    <li> <%= sesh.start_time %> </li>
+<% end %>
 
 <% if @user.photo.attached? %>
 <div class="square">

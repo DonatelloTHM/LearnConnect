@@ -12,7 +12,7 @@ class UserSessionsController < ApplicationController
             redirect_to @user
         else
             flash[:notice]="Wrong credentials!"
-            redirect_to login_user
+            redirect_to login_user_path
         end
     end
 

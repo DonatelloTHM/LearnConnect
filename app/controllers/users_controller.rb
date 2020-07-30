@@ -19,7 +19,8 @@ class UsersController < ApplicationController
     end
 
     def edit
-        @city=City.find_by(id:@user.city_id) 
+        @city=City.find_by(id:@user.city_id)
+        @errors=flash[:errors]
     end
 
     def show         
