@@ -7,6 +7,16 @@ class Tutor < ApplicationRecord
   belongs_to :city
   has_one_attached :photo
 
+  validates :username, presence: true
+  validates :username, uniqueness: true
+  validates :password, length: { in: 6..10 }
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :address, presence: true
+  validates :subjects, presence: true
+  validates :age, presence: true
+  validates :education_level, presence: true
+
 
   def city_id=(arr)
 
@@ -27,13 +37,8 @@ class Tutor < ApplicationRecord
     self.first_name+" "+self.last_name
   end
 
-
-
-
   def show_tutoring_sessions
     hours=["1200","1330","1500","1630","1800"]
-
-
   end
 
 
