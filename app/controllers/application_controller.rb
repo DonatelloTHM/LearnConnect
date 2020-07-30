@@ -13,7 +13,9 @@ class ApplicationController < ActionController::Base
     def current_user
         @user=User.find_by(id:session[:user_id])
     end
+
     def current_tutor
         @tutor=Tutor.find_by(id:session[:tutor_id])
     end
+    
 end

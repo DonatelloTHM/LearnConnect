@@ -1,8 +1,6 @@
 class TutorsController < ApplicationController
     before_action :find_tutor_id, only:[:show,:edit,:update,:destroy]
-    before_action :cities_states
-    
-    
+    before_action :cities_states 
         
     def index
         @tutors=Tutor.all
@@ -68,17 +66,6 @@ class TutorsController < ApplicationController
     end
 
     def create
-
-        # def check_city
-        #     state=CS.states(:us).key(self.state)
-        #     cities=CS.cities(state, :us)
-        # if(cities.include?(self.name))
-        #     return true
-        # else
-        #     return false
-        # end
-        # end
-
         @tutor=Tutor.create(tutor_params)
         if @tutor.valid?
             log_tutor_in(@tutor)
@@ -100,11 +87,21 @@ class TutorsController < ApplicationController
     end
     
     def edit
+        byebug
        @city=City.find_by(id:@tutor.city_id) 
     end
 
     def show
         # return head(:forbidden) unless @tutor == current_tutor
+    end
+
+    def update
+        @tutor.update(tutor_params)
+        if @tutor.save 
+            redirect_to @tutor
+        else
+            render :edit
+        end
     end
 
     private

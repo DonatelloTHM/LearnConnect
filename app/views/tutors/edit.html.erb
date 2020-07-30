@@ -1,4 +1,4 @@
-<h1> Create User </h1>
+<h1>Edit Info</h1>
 <% if @errors %>
     <ul>
         <% @errors.each do |error|%>
@@ -40,7 +40,7 @@
         <%= f.label :address %>
         <%= f.text_field :address%>
         <br>
-
+      <% byebug %>
         <div class="city_info">
             <%= f.fields_for :city_id do |c| %>
                 <%= c.label :name, "City"%>

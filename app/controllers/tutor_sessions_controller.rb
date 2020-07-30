@@ -17,7 +17,7 @@ class TutorSessionsController < ApplicationController
     end
 
     def destroy
-        session.delete(:tutor_id)
+        session[:tutor_id] = nil
         flash[:notice] = "Logged out!"
         redirect_to root_path
     end

@@ -1,4 +1,4 @@
-<h1>Sign up to learn!</h1>
+<h1>Edit Info</h1>
 <% if @errors %>
     <ul>
         <% @errors.each do |error|%>
@@ -40,28 +40,23 @@
         <%= f.label :address %>
         <%= f.text_field :address%>
         <br>
-
         <div class="city_info">
             <%= f.fields_for :city_id do |c| %>
                 <%= c.label :name, "City"%>
-                <%= c.text_field :name, list: "cities_autocomplete" %>
+                <%= c.text_field :name, value:"#{@city.name}", list: "cities_autocomplete" %>
                 <datalist id="cities_autocomplete">
                     <% @cities.each do |city| %>
                     <option value="<%= city %>">
                     <% end %>
                 </datalist>
                 <%= c.label :state %>
-                <%= c.text_field :state, list: "state_autocomplete" %>
+                <%= c.text_field :state,value:"#{@city.state}", list: "state_autocomplete" %>
                 <datalist id="state_autocomplete">
                     <% @states.each do |state| %>
                     <option value="<%= state %>">
                     <% end %>
                 </datalist>
             <% end%>
-            <br>
-            <%= f.label "Profile Photo" %>
-            <%= f.file_field :photo %>
-            <br>
             <%= f.submit %>
             <% end%>
         </div>
