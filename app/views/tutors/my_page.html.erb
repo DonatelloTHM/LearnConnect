@@ -1,18 +1,17 @@
-
 <div class="tutors_schedule_page">
 <div class="tutors_schedule_inner_page">
-<% if @user.photo.attached? %>
-                <img class="avatar_photo" src="<%= (url_for(@user.photo)) %>" alt="Avatar" style="width:150px;height:150px;">
+<% if @tutor.photo.attached? %>
+                <img class="avatar_photo" src="<%= (url_for(@tutor.photo)) %>" alt="Avatar" style="width:150px;height:150px;">
             <% else%>
                 <img class="avatar_photo" src="https://fertilitynetworkuk.org/wp-content/uploads/2017/01/Facebook-no-profile-picture-icon-620x389.jpg" alt="Avatar" style="width:200px;height:200px;">
             <% end%>
 <div style="margin-left:40px;">
-<h1 id="tutor_full_name"><%= @user.full_name %></h1>
-<h3><%= @user.city.name %>, <%=@user.city.state_code%></h3>
-<h4 style="color:grey;"><%= @user.occupation %></h4>
+<h1 id="tutor_full_name"><%= @tutor.full_name %></h1>
+<h3><%= @tutor.city.name %>, <%=@tutor.city.state_code%></h3>
+<h4 style="color:grey;"><%= @tutor.education_level %></h4>
 </div>
 </div>
-<%= button_to "Edit info", edit_user_path(@user), method: :get,class:"my_buttons_1"%>
+<%= button_to "Edit info", edit_tutor_path(@tutor), method: :get,class:"my_buttons_1"%>
 </div>
 </div>
 <hr>
@@ -23,18 +22,17 @@
         <% timenow=DateTime.now %>
         <% timenow=DateTime.new(timenow.year,timenow.month,timenow.day,timenow.hour,timenow.min) %>
         <% checked_value=TutoringSession.where("start_time >= ?", timenow)%>
-        <% upcoming_session=checked_value.where(user_id:@user) %>
+        <% upcoming_session=checked_value.where(tutor_id:@tutor) %>
 
         <% upcoming_session.each do |tutoring_session|%>
         <div class="tutoring_sessions_times">
         <div class="tutoring_session_name_photo">
         <% if tutoring_session.tutor.photo.attached? %>
-                <img class="avatar_photo_smaller" src="<%= (url_for(tutoring_session.tutor.photo)) %>" alt="Avatar">
+                <img class="avatar_photo_smaller" src="<%= (url_for(tutoring_session.user.photo)) %>" alt="Avatar">
             <% else%>
                 <img class="avatar_photo_smaller" src="https://fertilitynetworkuk.org/wp-content/uploads/2017/01/Facebook-no-profile-picture-icon-620x389.jpg" alt="Avatar">
             <% end%>
-            <% byebug%>
-            <h1><%= tutoring_session.tutor.full_name %></h1></div>
+            <h1><%= tutoring_session.user.full_name %></h1></div>
             <h1><%= tutoring_session.start_time.utc.strftime("%A, ") %> at <%= tutoring_session.start_time.utc.strftime("%H:%M") %></h1>
             <%= button_to "Cancel", cancel_session_path, method: :post,params:{tutoring_session_id: tutoring_session.id},class:"cancel_button"%>
         </div>
@@ -47,19 +45,24 @@
         <% timenow=DateTime.now %>
         <% timenow=DateTime.new(timenow.year,timenow.month,timenow.day,timenow.hour,timenow.min) %>
         <% checked_value=TutoringSession.where("start_time < ?", timenow)%>
-        <% upcoming_session=checked_value.where(user_id:@user) %>
+        <% upcoming_session=checked_value.where(tutor_id:@tutor) %>
         <% upcoming_session.each do |tutoring_session|%>
         <div class="tutoring_sessions_times">
         <div class="tutoring_session_name_photo">
-        <% if tutoring_session.tutor.photo.attached? %>
-                <img class="avatar_photo_smaller" src="<%= (url_for(tutoring_session.tutor.photo)) %>" alt="Avatar">
+        <% if tutoring_session.user.photo.attached? %>
+                <img class="avatar_photo_smaller" src="<%= (url_for(tutoring_session.user.photo)) %>" alt="Avatar">
             <% else%>
                 <img class="avatar_photo_smaller" src="https://fertilitynetworkuk.org/wp-content/uploads/2017/01/Facebook-no-profile-picture-icon-620x389.jpg" alt="Avatar">
             <% end%>
-            <h1><%= tutoring_session.tutor.full_name %></h1></div>
+            <h1><%= tutoring_session.user.full_name %></h1></div>
             <h1><%= tutoring_session.start_time.utc.strftime("%A, %B %-d") %> at <%= tutoring_session.start_time.utc.strftime("%H:%M") %></h1>
         </div>
         <% end%>
+
+
+
+
+
 
 
 

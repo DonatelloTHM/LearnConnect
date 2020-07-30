@@ -1,5 +1,5 @@
 class TutorsController < ApplicationController
-    before_action :find_tutor_id, only:[:show,:edit,:update,:destroy]
+    before_action :find_tutor_id, only:[:show,:edit,:update,:destroy,:my_page]
     before_action :cities_states 
         
     def index
@@ -78,6 +78,7 @@ class TutorsController < ApplicationController
 
     def schedule_session
         @tutoring_session=TutoringSession.create(tutoring_session_params)
+        redirect_back(fallback_location: root_path)
     end
 
     def cancel_session
@@ -87,7 +88,6 @@ class TutorsController < ApplicationController
     end
     
     def edit
-        byebug
        @city=City.find_by(id:@tutor.city_id) 
     end
 
@@ -104,6 +104,23 @@ class TutorsController < ApplicationController
         end
     end
 
+    def my_page
+
+    end
+
+    def make_available
+        @tutoring_session=TutoringSession.find(params[:tutoring_session_id])
+        @tutoring_session.destroy
+        redirect_to current_tutor
+    end
+
+    def make_unavailable
+        # @tutoring_session=TutoringSession.create(tutoring_session_params)
+        @tutoring_session=TutoringSession.create(start_time:params[:tutoring_sessions][:start_time],tutor_id:params[:tutoring_sessions][:tutor_id],duration:params[:tutoring_sessions][:duration])
+        byebug
+        redirect_to current_tutor
+    end
+
     private
     def find_tutor_id
         @tutor=Tutor.find(params[:id])
@@ -117,6 +134,8 @@ class TutorsController < ApplicationController
         @cities=CS.states(:us).keys.flat_map { |state| CS.cities(state, :us) }.uniq
         @states=CS.states(:us).values
     end
+
+    
 
     def tutoring_session_params
         params.require(:tutoring_sessions).permit(:user_id,:tutor_id,:start_time,:duration)

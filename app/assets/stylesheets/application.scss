@@ -51,6 +51,13 @@ body::-webkit-scrollbar-thumb{
         object-fit: cover;
     }
 
+.avatar_photo_smaller {
+  border-radius: 50%;
+  width: 60px; /* width of container */
+  height: 60px; /* height of container */
+  object-fit: cover;
+  }
+
 
  /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .flip-card {
@@ -383,6 +390,12 @@ body::-webkit-scrollbar-thumb{
   display:flex;
 }
 
+.tutoring_session_name_photo{
+  display: flex;
+  width: auto;
+  gap: 20px;
+}
+
 // form input[type=text],
 // form input[type=password] {
 //   width: 50;
@@ -394,3 +407,17 @@ body::-webkit-scrollbar-thumb{
 //   color: #e74c3c;
 //   outline: none;
 // }
+
+.previous_tutoring_sessions{
+  padding:20px;
+  display:flex;
+  justify-content: space-between;;
+  color:white;
+  align-content: center;
+  background-color:#393e46 ;
+  margin-top: 40px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3);
+  h4{
+    color:#87cfd8;
+  }
+}

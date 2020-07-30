@@ -6,12 +6,8 @@
         <%end %>
     </ul>
 <% end%>
-
 <%=form_for @tutor do |f|%>
     <div class="tutor_auth">
-        <%= f.label :username%>
-        <%= f.text_field :username %>
-        <br>
         <%= f.label :password%>
         <%= f.password_field :password %>
         <br>
@@ -40,7 +36,6 @@
         <%= f.label :address %>
         <%= f.text_field :address%>
         <br>
-      <% byebug %>
         <div class="city_info">
             <%= f.fields_for :city_id do |c| %>
                 <%= c.label :name, "City"%>
