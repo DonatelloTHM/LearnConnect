@@ -94,7 +94,9 @@ class TutorsController < ApplicationController
     end
 
     def cancel_session
-        byebug
+        @tutoring_session=TutoringSession.find(params[:tutoring_session_id])
+        @tutoring_session.destroy
+        redirect_to tutors_path
     end
     
     def edit

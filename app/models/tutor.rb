@@ -18,6 +18,10 @@ class Tutor < ApplicationRecord
     Tutor.all.map{|subject| subject.subjects.downcase}.join(',').split(/[^\w-]+/).uniq
   end
 
+  def get_subjects
+    self.subjects.downcase.split(/[^\w-]+/)
+  end
+
 
   def full_name
     self.first_name+" "+self.last_name
