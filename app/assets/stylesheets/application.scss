@@ -204,15 +204,7 @@ body::-webkit-scrollbar-thumb{
 }
 
 .my_buttons:hover {
-  background-color: #8bad45;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  transition-duration: 0.4s;
+  background-color: #c2e778;
 }
 
 .my_buttons_1 {   
@@ -296,11 +288,15 @@ body::-webkit-scrollbar-thumb{
 .day_of_week{
   padding:20px;
   display:flex;
-  justify-content: center;
+  justify-content: space-between;;
   color:white;
+  align-content: center;
   background-color:#1cb3c8 ;
   margin-top: 40px;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3);
+  h4{
+    color:#87cfd8;
+  }
 }
 
 .reserved_by{
@@ -386,3 +382,15 @@ body::-webkit-scrollbar-thumb{
 .tutors_schedule_inner_page{
   display:flex;
 }
+
+// form input[type=text],
+// form input[type=password] {
+//   width: 50;
+//   height: 40px;
+//   margin-bottom: 10px;
+//   padding-left: 15px;
+//   background: #fff;
+//   border: none;
+//   color: #e74c3c;
+//   outline: none;
+// }

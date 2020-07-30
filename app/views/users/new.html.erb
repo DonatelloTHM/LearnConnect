@@ -8,6 +8,7 @@
 <% end%>
 
 <%=form_for @user do |f|%>
+<div class="signup_forms">
     <div class="user_auth">
         <%= f.label :username%>
         <%= f.text_field :username %>
@@ -40,7 +41,7 @@
         <%= f.label :address %>
         <%= f.text_field :address%>
         <br>
-
+    </div>
         <div class="city_info">
             <%= f.fields_for :city_id do |c| %>
                 <%= c.label :name, "City"%>
@@ -64,5 +65,6 @@
             <br>
             <%= f.submit %>
             <% end%>
-        </div>
+        
+    </div>
     </div>
