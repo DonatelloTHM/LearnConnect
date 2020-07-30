@@ -228,7 +228,7 @@ body::-webkit-scrollbar-thumb{
 }
 
 .my_buttons_1:hover {   
-  background-color: #f8776d;  
+  background-color: #fa968f;  
 }
 
 .my_buttons_1:active {   
@@ -300,13 +300,14 @@ body::-webkit-scrollbar-thumb{
   color:white;
   background-color:#1cb3c8 ;
   margin-top: 40px;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3);
 }
 
 .reserved_by{
   color:#eb4559;
   font-size:30px;
   align-self: center;
+  padding-right: 10px;
 }
 .timeslot_passed{
   color:#e6e6e6;
@@ -326,4 +327,62 @@ body::-webkit-scrollbar-thumb{
 
 .reserved_by_you{
   color:#e6e6e6;
+}
+
+.tutors_schedule_page{
+  display:flex;
+  padding:60px;
+  padding-bottom: 30px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+
+.cancel_button{
+    background-color: #ff9234;  
+    border: none;
+    color: white;
+    padding: 15px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+}
+
+
+.cancel_button:hover{
+  background-color: #fdaf6a;  
+}
+
+#tutor_full_name{
+  color:#e8505b;
+}
+
+.subject_tags{
+  display:flex;
+  flex-direction: column;
+  font-size: 28px;
+}
+
+.subject_tags_inner{
+  display:flex;
+  flex-direction: row;
+  margin-top:10px;
+}
+
+.inner_subject_tags{
+  background-color: #fd5e53;  
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.tutors_schedule_inner_page{
+  display:flex;
 }

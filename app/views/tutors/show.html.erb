@@ -1,4 +1,30 @@
-<h1><%= @tutor.full_name %></h1>
+<div class="tutors_schedule_page">
+<div class="tutors_schedule_inner_page">
+<% if @tutor.photo.attached? %>
+                <img class="avatar_photo" src="<%= (url_for(@tutor.photo)) %>" alt="Avatar" style="width:150px;height:150px;">
+            <% else%>
+                <img class="avatar_photo" src="https://fertilitynetworkuk.org/wp-content/uploads/2017/01/Facebook-no-profile-picture-icon-620x389.jpg" alt="Avatar" style="width:200px;height:200px;">
+            <% end%>
+<div style="margin-left:40px;">
+<h1 id="tutor_full_name"><%= @tutor.full_name %></h1>
+<h3><%= @tutor.city.name %>, <%=@tutor.city.state_code%></h3>
+<h4 style="color:grey;"><%= @tutor.education_level %></h4>
+</div>
+</div>
+<div class="subject_tags">
+<h3>Subjects</h3>
+<div class="subject_tags_inner">
+<% @tutor.get_subjects.each do |subject|%>
+<h3 class="inner_subject_tags"><%=subject%></h3>
+<% end%>
+</div>
+</div>
+
+            
+</div>
+
+
+<hr>
 
 <% n=1 %>
 <% d=Date.today%>
@@ -23,10 +49,10 @@
                             <% if checked_value.user==current_user%>
                             <h1 class="cancel_by_me"><%=h+":"+m %></h1>
                             <h1 class="reserved_by_you">Reserved by You</h1>
-                            <%= button_to "Cancel", cancel_session_path, method: :post,params:{tutoring_session_id: checked_value.id},class:"my_buttons_1"%>
+                            <%= button_to "Cancel", cancel_session_path, method: :post,params:{tutoring_session_id: checked_value.id},class:"cancel_button"%>
                             <% else%>
                             <h1><%=h+":"+m %></h1>
-                            <h1 class="reserved_by">Reserved by <%= checked_value.user.first_name %></h1>
+                            <h1 class="reserved_by">RESERVED</h1>
                             <% end%>
                         <% else%>
                         <h1><%=h+":"+m %></h1>
