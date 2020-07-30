@@ -28,16 +28,29 @@
       left:50%;
       transform: translate(-50%,-50%);
       padding:60px;
+      padding-right:80;
+      padding-left:80;
   }
 
   #tutoringapp{
       font-size:7vw;
       // font-size: 120px;
       color: #1b262c;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: 'Open Sans', sans-serif;
+      font-style:"Bold 800";
+      
   }
   #learnteach{
+    
       font-size:2vw;
       text-align: center;
-      color: #0f4c75;
+      color: #393e46;
+      font-family: "Open Sans";
+      font-weight: 300;
   }
+
+  .ourlogo{
+    font-weight: 800;
+    color:#eb4559;
+  }
+

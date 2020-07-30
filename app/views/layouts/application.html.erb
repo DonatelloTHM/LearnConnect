@@ -4,6 +4,7 @@
     <title>Mod2TutoringService</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -12,12 +13,15 @@
   <body>
     <% if session[:user_id]%>
     <ul class="navbar_man">
+        <li id="logotutor"><a href="<%= tutors_path %>">Tutor<span class="ourlogo">Free</span></a></li>
         <li><%= link_to "Home", tutors_path %></li>
         <li><%= link_to "My Page", current_user %></li>
         <li class="logout" style="margin-left:auto;"><%=link_to "Log Out", user_logout_path , method: :delete%></li>
+        
     </ul>
     <% elsif session[:tutor_id] %>
     <ul class="navbar_man">
+        <li id="logotutor"><a href="<%= my_page_path(current_tutor) %>">Tutor<span class="ourlogo">Free</span></a></li>
         <li><%= link_to "My Page", my_page_path(current_tutor) %></li>
         <li class="logout" style="margin-left:auto;"><%=link_to "Log Out", logout_path , method: :delete%></li>
     </ul>

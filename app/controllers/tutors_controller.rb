@@ -4,7 +4,6 @@ class TutorsController < ApplicationController
         
     def index
         @tutors=Tutor.all
-        
         if(params[:search].present?)
             the_state=params[:search][:state]
             the_city=params[:search][:city]

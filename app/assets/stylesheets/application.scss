@@ -426,17 +426,17 @@ body::-webkit-scrollbar-thumb{
   font-size: 19px;
   list-style-type: none;
   display: flex;
-  flex-wrap: wrap;
   background-color: #1b262c;
   a{
+    font-size: 18px;
     display: block;
   color: white;
   text-align: center;
-  padding: 16px 26px;
+  padding: 17px 26px;
   text-decoration: none;
   }
   a:hover{
-  background-color: #f78259;
+  background-color: #00bcd4;
   text-decoration: none;
   }
 
@@ -444,6 +444,68 @@ body::-webkit-scrollbar-thumb{
     background-color: #eb4559;
   }
 }
+
+#logotutor{
+  margin-right: 20px;
+}
+
+
+.ourlogo{
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 800;
+  color:#eb4559;
+}
+
+.form_container_edit{
+  display: flex;
+  width: 60%;
+  
+  flex-direction: column;
+  gap:30px;
+  input[type=text],input[type=password],input[type=number], select, textarea{
+    width: auto;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+    border: none;
+}
+}
+
+.user_auth{
+  flex-direction: column;
+  align-content: left;
+  div{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    width: 100%;
+    
+  }
+}
+
+.forms_centering{
+  position: relative;
+  top:50%;
+  left:20%;
+  margin-bottom:40px;
+  // transform: translate(-50%,-50%);
+  h1{
+    color:#eb4559;
+  }
+}
+
+.edit_text_form{
+margin-bottom:60px;
+background-color:#f0efef;
+text-align:center;
+padding:25px;
+box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
+}
+
+
+
 
 
 
