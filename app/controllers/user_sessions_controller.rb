@@ -1,5 +1,5 @@
 class UserSessionsController < ApplicationController
-
+    layout "home"
     def new
         
     end
@@ -8,7 +8,7 @@ class UserSessionsController < ApplicationController
         @user=User.find_by(username:params[:username])
         if @user && @user.authenticate(params[:password])
             log_user_in(@user)
-            flash[:notice]="Welcome #{@user.full_name}, Login was succesful."
+            # flash[:notice]="Welcome #{@user.full_name}, Login was succesful."
             redirect_to @user
         else
             flash[:notice]="Wrong credentials!"
@@ -18,7 +18,6 @@ class UserSessionsController < ApplicationController
 
     def destroy
         session.delete(:user_id)
-        flash[:notice] = "Logged out!"
         redirect_to root_path
     end
 

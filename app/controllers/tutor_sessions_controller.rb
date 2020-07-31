@@ -1,5 +1,5 @@
 class TutorSessionsController < ApplicationController
-
+    layout "home"
     def new
 
     end
@@ -8,7 +8,7 @@ class TutorSessionsController < ApplicationController
         @tutor=Tutor.find_by(username:params[:username])
         if @tutor && @tutor.authenticate(params[:password])
             log_tutor_in(@tutor)
-            flash[:notice]="Welcome #{@tutor.full_name}, Login was succesful."
+            # flash[:notice]="Welcome #{@tutor.full_name}, Login was succesful."
             redirect_to my_page_path(@tutor)
         else
             flash[:notice]="Wrong credentials!"
@@ -18,7 +18,6 @@ class TutorSessionsController < ApplicationController
 
     def destroy
         session[:tutor_id] = nil
-        flash[:notice] = "Logged out!"
         redirect_to root_path
     end
 

@@ -1,12 +1,20 @@
-<h1 class="edit_text_form">Register to Learn!</h1>
-<div class="forms_centering">
+<%= render "/nav/navbar" %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+
+<h1 class="edit_text_form">Register to Teach!</h1>
 <% if @errors %>
-    <ul>
+    <ul id="errors_flash">
         <% @errors.each do |error|%>
-            <li style="color:blue;"><%= error %></li>
+            <li class="errors_flash"><%= error %></li>
         <%end %>
     </ul>
 <% end%>
+<div class="forms_centering">
+
 
         <%=form_for @tutor, html: { class: "form_container_edit" } do |f|%>
         <h1>Authorization Info</h1>
@@ -93,13 +101,16 @@
                     </div>
                 </div>
             <% end%>
-            
-            <h1>Profile Photo</h1>
+            <div>
+            <h1 style="margin-bottom:30px;">Profile Photo</h1>
 
             <div class="photo_submit">
             <%= f.file_field :photo %>
             </div>
+            </div>
+            <div style="margin-top:30px;">
             <%= f.submit "Submit", class: "my_buttons" %>
+            </div>
         <% end%>
       </div>
     </div>

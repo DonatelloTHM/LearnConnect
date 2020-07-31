@@ -77,13 +77,13 @@ class TutorsController < ApplicationController
 
     def schedule_session
         @tutoring_session=TutoringSession.create(tutoring_session_params)
-        redirect_back(fallback_location: root_path)
+        redirect_back(fallback_location: current_user)
     end
 
     def cancel_session
         @tutoring_session=TutoringSession.find(params[:tutoring_session_id])
         @tutoring_session.destroy
-        redirect_to tutors_path
+        redirect_back(fallback_location: current_user)
     end
     
     def edit

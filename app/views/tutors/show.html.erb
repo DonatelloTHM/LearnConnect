@@ -38,6 +38,8 @@
 <% end%>
 <h4 style="align-self:center;"><%= d %></h4>
 </div>
+
+<% if d.strftime("%A") != "Saturday" && d.strftime("%A") != "Sunday"%>
 <% @tutor.show_tutoring_sessions.each do |hour|%>
         <% h=hour[0,2] %>
         <% m=hour[2,4]%>
@@ -65,6 +67,11 @@
                         <h1 class="timeslot_passed"> This timeslot passed.</h1>
                     <% end%>
         </div>
+<% end%>
+<% else%>
+    <div class="tutoring_sessions_times">
+        <h1 style="margin:auto; color:#e8e4e1;">Tutors are off on the weekends!</h1>
+    </div>
 <% end%>
 <% d+=1%>
 <% n+=1 %>

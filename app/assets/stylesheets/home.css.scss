@@ -54,3 +54,95 @@
     color:#eb4559;
   }
 
+  .form_container_login{
+    display:flex;
+    
+  }
+  
+  .both_parts{
+    display:flex;
+    flex-direction: column;
+    gap:20px;
+    font-size: 19px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+    color: #f3f3f3;
+  }
+
+  .login_username{
+    display:flex;
+    flex-direction: column;
+  }
+
+  .login_password{
+    display:flex;
+    flex-direction: column;
+    
+  }
+
+  .form_for_login{
+    input[type=text],input[type=password],input[type=number], select, textarea{
+    width: auto;
+    padding: 12px;
+    border: 2px solid rgb(109, 109, 109);
+    border-radius: 1px;
+    box-sizing: border-box;
+    resize: vertical;
+    border: none;
+  }
+  input:focus{
+    outline: none;
+    background-color: #ff847c;
+    color:white;
+  }
+}
+
+
+
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+  .tutoringapp2 {
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: rgba(199, 199, 199, 0.5);  
+  }
+  .warning {
+    display: none;
+  }
+}
+
+.tutoringapp2{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    padding:80px;
+    padding-right:80;
+    padding-left:80;
+}
+
+
+.my_buttons {
+  margin-top:20px;
+  background-color: #a1c45a;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+}
+
+.my_buttons:hover {
+  background-color: #c2e778;
+}
+
+.flash_notices{
+  font-family: 'Open Sans', sans-serif;
+  color:#e8505b;
+  text-align:center ;
+  font-size:20px;
+}
+  
+

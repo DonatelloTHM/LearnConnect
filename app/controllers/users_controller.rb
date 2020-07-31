@@ -2,6 +2,9 @@ class UsersController < ApplicationController
     before_action :find_user_id, only:[:show,:edit,:update,:destroy]
     before_action :cities_states
 
+    
+
+
     def new
         @user=User.new
         @errors=flash[:errors]
@@ -49,4 +52,5 @@ class UsersController < ApplicationController
         @cities=CS.states(:us).keys.flat_map { |state| CS.cities(state, :us) }.uniq
         @states=CS.states(:us).values
     end
+
 end

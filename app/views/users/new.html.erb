@@ -1,12 +1,15 @@
+<%= render "/nav/navbar" %>
+
 <h1 class="edit_text_form">Register to Learn!</h1>
-<div class="forms_centering">
 <% if @errors %>
-    <ul>
+    <ul id="errors_flash">
         <% @errors.each do |error|%>
-            <li style="color:blue;"><%= error %></li>
+            <li class="errors_flash"><%= error %></li>
         <%end %>
     </ul>
 <% end%>
+<div class="forms_centering">
+
 
         <%=form_for @user, html: { class: "form_container_edit" } do |f|%>
         <h1>Authorization Info</h1>
@@ -57,7 +60,7 @@
 
                 <div>
                 <%= f.label :grade %>
-                <%= f.text_field :grade %>
+                <%= f.text_field :grade ,placeholder:"optional"%>
                 </div>
             </div>
         </div>
@@ -93,13 +96,16 @@
                     </div>
                 </div>
             <% end%>
-            
-            <h1>Profile Photo</h1>
+            <div>
+            <h1 style="margin-bottom:30px;">Profile Photo</h1>
 
             <div class="photo_submit">
             <%= f.file_field :photo %>
             </div>
+            </div>
+            <div style="margin-top:30px;">
             <%= f.submit "Submit", class: "my_buttons" %>
+            </div>
         <% end%>
       </div>
     </div>
