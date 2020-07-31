@@ -68,7 +68,7 @@ class TutorsController < ApplicationController
         @tutor=Tutor.create(tutor_params)
         if @tutor.valid?
             log_tutor_in(@tutor)
-            redirect_to @tutor
+            redirect_to my_page_path(@tutor)
         else
             flash[:errors]=@tutor.errors.full_messages
             redirect_to new_tutor_path
