@@ -10,7 +10,7 @@
 <% end%>
 
 <%=form_for @user, html: { class: "form_container_edit" } do |f|%>
-<h1>Authorization info</h1>
+<h1>Authorization Info</h1>
     <div class="user_auth">
     
         <div>
@@ -30,28 +30,28 @@
         </div>
     </div>
     </div>
-    <h1>Personal info</h1>
+    <h1>Personal Info</h1>
     <div class="user_auth">
         <div style="flex-direction:row; gap:20px;">
         <div>
-        <%= f.label :first_name %>
-        <%= f.text_field :first_name %>
+            <%= f.label :first_name %>
+            <%= f.text_field :first_name %>
         </div>
 
         <div>
-        <%= f.label :last_name %>
-        <%= f.text_field :last_name %>
+            <%= f.label :last_name %>
+            <%= f.text_field :last_name %>
         </div>
         
         <div>
-        <%= f.label :age %>
-        <%= f.number_field :age %>
+            <%= f.label :age %>
+            <%= f.number_field :age %>
         </div>
         </div>
         <div style="flex-direction:row; gap:20px;">
         <div>
-        <%= f.label :occupation %>
-        <%= f.text_field :occupation %>
+            <%= f.label :occupation %>
+            <%= f.text_field :occupation %>
         </div>
 
         <div>
@@ -62,13 +62,13 @@
         </div>
     <h1>Address Info</h1>
         <div class="user_auth">
-                <div>
-            <%= f.label :address %>
-            <%= f.text_field :address%>
-            </div>
-            <%= f.fields_for :city_id do |c| %>
             <div>
-             <div style="flex-direction:row; gap:20px;">
+                <%= f.label :address %>
+                <%= f.text_field :address%>
+            </div>
+                <%= f.fields_for :city_id do |c| %>
+            <div>
+            <div style="flex-direction:row; gap:20px;">
             <div>
                 <%= c.label :name, "City"%>
                 <%= c.text_field :name, value:"#{@city.name}", list: "cities_autocomplete" %>
@@ -80,8 +80,8 @@
                 </div>
 
                 <div>
-                <%= c.label :state %>
-                <%= c.text_field :state,value:"#{@city.state}", list: "state_autocomplete" %>
+                    <%= c.label :state %>
+                    <%= c.text_field :state,value:"#{@city.state}", list: "state_autocomplete" %>
                 <datalist id="state_autocomplete">
                     <% @states.each do |state| %>
                     <option value="<%= state %>">
@@ -90,7 +90,7 @@
                 </div>
                 </div>
             <% end%>
-            <%= f.submit "Submit" ,class: "my_buttons" %>
+            <%= f.submit "Submit", class: "my_buttons" %>
             <% end%>
         </div>
     </div>

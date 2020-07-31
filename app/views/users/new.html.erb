@@ -1,5 +1,5 @@
-<div class="container">
-<h1>Sign up to learn!</h1>
+<h1 class="edit_text_form">Register to Learn!</h1>
+<div class="forms_centering">
 <% if @errors %>
     <ul>
         <% @errors.each do |error|%>
@@ -8,124 +8,99 @@
     </ul>
 <% end%>
 
-    <%=form_for @user, html: { class: "form" } do |f|%>
-    <div class="row">
-        <div class="col-25">
+        <%=form_for @user, html: { class: "form_container_edit" } do |f|%>
+        <h1>Authorization Info</h1>
+        
+        <div class="user_auth">
+             <div>
             <%= f.label :username%>
-        </div>
-        <div class="col-75">
             <%= f.text_field :username %>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-25">
+            </div>
+
+        <div style="flex-direction:row; gap:20px;"> 
+            <div>
             <%= f.label :password%>
-        </div>
-        <div class="col-75"> 
             <%= f.password_field :password %>
-        </div>
-        </div>
-        <div class="row">
-            <div class="col-25">
-                <%= f.label :password_confirmation%>
             </div>
-            <div class="col-75"> 
+
+            <div>
+            <%= f.label :password_confirmation%>
             <%= f.password_field :password_confirmation %>
+            </div>
         </div>
         </div>
- 
-        <div class="row">
-            <div class="col-25">
+
+        <h1>Personal Info</h1>
+        <div class="user_auth">
+            <div style="flex-direction:row; gap:20px;">
+                <div>
                 <%= f.label :first_name %>
-            </div>
-            <div class="col-75"> 
                 <%= f.text_field :first_name %>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-25">
+                </div>
+
+                <div>
                 <%= f.label :last_name %>
-            </div>
-            <div class="col-75"> 
                 <%= f.text_field :last_name %>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-25">
+                </div>
+
+                <div>
                 <%= f.label :age %>
-            </div>
-            <div class="col-75"> 
                 <%= f.number_field :age %>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-25">
+
+            <div style="flex-direction:row; gap:20px;">
+                <div>
                 <%= f.label :occupation %>
-            </div>
-            <div class="col-75"> 
                 <%= f.text_field :occupation %>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-25">
+                </div>
+
+                <div>
                 <%= f.label :grade %>
-            </div>
-            <div class="col-75"> 
                 <%= f.text_field :grade %>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-25">
-                <%= f.label :address %>
-            </div>
-            <div class="col-75"> 
-                <%= f.text_field :address %>
+                </div>
             </div>
         </div>
 
-            <div class="city_info">
+    <h1>Address Info</h1>
+        <div class="user_auth">
+            <div>
+            <%= f.label :address %>
+            <%= f.text_field :address %>
+        </div>
+
             <%= f.fields_for :city_id do |c| %>
-            <div class="row">
-                <div class="col-25">
+            <div>
+                <div style="flex-direction:row; gap:20px;">
+                    <div>
                     <%= c.label :name, "City"%>
-                </div>
-                <div class="col-75"> 
-                <%= c.text_field :name, list: "cities_autocomplete" %>
-                <datalist id="cities_autocomplete">
-                    <% @cities.each do |city| %>
-                    <option value="<%= city %>">
+                    <%= c.text_field :name, list: "cities_autocomplete" %>
+                    <datalist id="cities_autocomplete">
+                        <% @cities.each do |city| %>
+                        <option value="<%= city %>">
                     <% end %>
-                </datalist>
-                </div>
-                </div>
-                <div class="row">
-                <div class="col-25">
+                    </datalist>
+                    </div>
+
+                    <div>    
                     <%= c.label :state %>
-                </div>
-                <div class="col-75"> 
-                <%= c.text_field :state, list: "state_autocomplete" %>
-                <datalist id="state_autocomplete">
-                    <% @states.each do |state| %>
-                    <option value="<%= state %>">
-                    <% end %>
-                </datalist>
-                </div>
+                    <%= c.text_field :state, list: "state_autocomplete" %>
+                    <datalist id="state_autocomplete">
+                        <% @states.each do |state| %>
+                        <option value="<%= state %>">
+                        <% end %>
+                    </datalist>
+                    </div>
                 </div>
             <% end%>
-            <br>
-            <div class="row">
-                <div class="col-25">
-                    <%= f.label "Profile Photo" %>
-                </div>
-                <div class="col-75"> 
-                <%= f.file_field :photo %>
-                <br>
-                </div>
-                </div>
-            <div class="row">
-            <%= f.submit %>
-            <% end%>
+            
+            <h1>Profile Photo</h1>
+
+            <div class="photo_submit">
+            <%= f.file_field :photo %>
             </div>
-        
+            <%= f.submit "Submit", class: "my_buttons" %>
+        <% end%>
+      </div>
     </div>
-    </div>
+</div>

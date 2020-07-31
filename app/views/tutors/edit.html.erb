@@ -1,5 +1,6 @@
-<h1>Edit Info</h1>
 
+<h1 class="edit_text_form">Edit Info</h1>
+<div class="forms_centering">
 <% if @errors %>
     <ul>
         <% @errors.each do |error|%>
@@ -7,39 +8,68 @@
         <%end %>
     </ul>
 <% end%>
-<%=form_for @tutor do |f|%>
-    <div class="tutor_auth">
+
+<%=form_for @tutor, html: { class: "form_container_edit" } do |f|%>
+<h1>Authorization Info</h1>
+    <div class="user_auth">
+    
+        <div>
+        <%= f.label :username%>
+        <%= f.text_field :username %>
+        </div>
+
+    <div style="flex-direction:row; gap:20px;">
+        <div>
         <%= f.label :password%>
         <%= f.password_field :password %>
-        <br>
+        </div>
+
+        <div>
         <%= f.label :password_confirmation%>
         <%= f.password_field :password_confirmation %>
-        <br>
+        </div>
     </div>
-    <br>
-    <br>
-    <div class="tutor_info">
-        <%= f.label :first_name %>
-        <%= f.text_field :first_name %>
-        <br>
-        <%= f.label :last_name %>
-        <%= f.text_field :last_name %>
-        <br>
-        <%= f.label :age %>
-        <%= f.number_field :age %>
-        <br>
-        <%= f.label :education_level %>
-        <%= f.text_field :education_level %>
-        <br>
+    </div>
+    <h1>Personal Info</h1>
+    <div class="user_auth">
+        <div style="flex-direction:row; gap:20px;">
+        <div>
+            <%= f.label :first_name %>
+            <%= f.text_field :first_name %>
+        </div>
+
+        <div>
+            <%= f.label :last_name %>
+            <%= f.text_field :last_name %>
+        </div>
+        
+        <div>
+            <%= f.label :age %>
+            <%= f.number_field :age %>
+        </div>
+        </div>
+        <div style="flex-direction:row; gap:20px;">
+        <div>
+            <%= f.label :education_level %>
+            <%= f.text_field :education_level %>
+        </div>
+
+        <div>
         <%= f.label :subjects %>
         <%= f.text_field :subjects%>
-        <br>
-        <%= f.label :address %>
-        <%= f.text_field :address%>
-        <br>
-    
-        <div class="city_info">
-            <%= f.fields_for :city_id do |c| %>
+        </div>
+        </div>
+        </div>
+    <h1>Address Info</h1>
+        <div class="user_auth">
+            <div>
+                <%= f.label :address %>
+                <%= f.text_field :address%>
+            </div>
+                <%= f.fields_for :city_id do |c| %>
+            <div>
+            <div style="flex-direction:row; gap:20px;">
+            <div>
                 <%= c.label :name, "City"%>
                 <%= c.text_field :name, value:"#{@city.name}", list: "cities_autocomplete" %>
                 <datalist id="cities_autocomplete">
@@ -47,15 +77,21 @@
                     <option value="<%= city %>">
                     <% end %>
                 </datalist>
-                <%= c.label :state %>
-                <%= c.text_field :state,value:"#{@city.state}", list: "state_autocomplete" %>
+                </div>
+
+                <div>
+                    <%= c.label :state %>
+                    <%= c.text_field :state,value:"#{@city.state}", list: "state_autocomplete" %>
                 <datalist id="state_autocomplete">
                     <% @states.each do |state| %>
                     <option value="<%= state %>">
                     <% end %>
                 </datalist>
+                </div>
+                </div>
             <% end%>
-            <%= f.submit %>
+            <%= f.submit "Submit", class: "my_buttons" %>
             <% end%>
         </div>
     </div>
+</div>
