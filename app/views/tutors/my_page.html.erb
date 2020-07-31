@@ -1,6 +1,6 @@
 <div class="tutors_schedule_page">
 <div class="tutors_schedule_inner_page">
-<% if @tutor.photo.attached? %>
+            <% if @tutor.photo.attached? %>
                 <img class="avatar_photo" src="<%= (url_for(@tutor.photo)) %>" alt="Avatar" style="width:150px;height:150px;">
             <% else%>
                 <img class="avatar_photo" src="https://fertilitynetworkuk.org/wp-content/uploads/2017/01/Facebook-no-profile-picture-icon-620x389.jpg" alt="Avatar" style="width:200px;height:200px;">
@@ -27,7 +27,7 @@
         <% upcoming_session.each do |tutoring_session|%>
         <div class="tutoring_sessions_times">
         <div class="tutoring_session_name_photo">
-        <% if tutoring_session.tutor.photo.attached? %>
+            <% if tutoring_session.tutor.photo.attached? %>
                 <img class="avatar_photo_smaller" src="<%= (url_for(tutoring_session.user.photo)) %>" alt="Avatar">
             <% else%>
                 <img class="avatar_photo_smaller" src="https://fertilitynetworkuk.org/wp-content/uploads/2017/01/Facebook-no-profile-picture-icon-620x389.jpg" alt="Avatar">

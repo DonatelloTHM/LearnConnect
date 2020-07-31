@@ -136,18 +136,49 @@ body::-webkit-scrollbar-thumb{
     margin-right:12px;
     background-color: #ff5f40;
    color: honeydew;
+   
    padding:10px;
    padding-bottom: 2px;
    padding-right: 14px;
    margin-bottom: 10px;
-   transition-duration: 0.4s;
+   transition-duration: 0.2s;
+   label{margin-right:4px;}
+   input[type="checkbox"]{
+     margin-right: -7px;
+    width: 11px;
+    height: 11px;
+    opacity:0;
+    background: white;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    position: relative;
+    left: -5px;
+    top: 5px;
+    outline:none;
+    transition:0.5s;
+   }
+   input:checked[type="checkbox"]{
+    width: 11px;
+    height: 11px;
+    opacity:1;
+    background: greenyellow;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    outline: none;
+    left: -5px;
+    top: 5px;
+   }
   }
 
   .checkbox:hover{
     display: flex;
     font-size: 14px;
     margin-right:12px;
-    background-color: #a1c45c;
+    background-color: #fc8973;
    color: honeydew;
    padding:10px;
    padding-bottom: 2px;
@@ -547,7 +578,23 @@ box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
   color: rgb(197, 197, 197);
 }
 
-
+.city_state_filter{
+  input[type=text],input[type=password]{
+  width: auto;
+  padding: 5px;
+  background-color: #e8e4e1;
+  border: 2px solid rgb(109, 109, 109);
+  border-radius: 1px;
+  box-sizing: border-box;
+  resize: vertical;
+  border: none;
+}
+input:focus{
+  outline: none;
+  background-color: #ff847c;
+  color:white;
+}
+}
 
 
 
