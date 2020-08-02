@@ -3,6 +3,7 @@ class TutorsController < ApplicationController
     before_action :cities_states 
         
     def index
+        @my_city_tutors=Tutor.select{|tutor|tutor.city==current_user.city}
         @tutors=Tutor.all
         if(params[:search].present?)
             the_state=params[:search][:state]

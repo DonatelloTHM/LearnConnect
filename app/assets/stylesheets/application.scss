@@ -36,15 +36,16 @@
  }
 
 
- body::-webkit-scrollbar{
+::-webkit-scrollbar{
   width:0.5rem;
 }
-body::-webkit-scrollbar-track{
+::-webkit-scrollbar-track{
   background:#1e1e24;
 }
-body::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb{
   background: #f8776d
 }
+
  .avatar_photo {
         width: 200px; /* width of container */
         height: 200px; /* height of container */
@@ -53,8 +54,8 @@ body::-webkit-scrollbar-thumb{
 
 .avatar_photo_smaller {
   border-radius: 50%;
-  width: 60px; /* width of container */
-  height: 60px; /* height of container */
+  width: 40px; /* width of container */
+  height: 40px; /* height of container */
   object-fit: cover;
   }
 
@@ -249,7 +250,7 @@ body::-webkit-scrollbar-thumb{
   background-color: #fd5e53;  
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 13px 35px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -262,7 +263,8 @@ body::-webkit-scrollbar-thumb{
 }
 
 .my_buttons_1:active {   
-  background-color: #6b2b26;  
+  background-color: #6b2b26;
+  outline: none;  
 }
 
 .my_buttons_2 {   
@@ -279,6 +281,12 @@ body::-webkit-scrollbar-thumb{
 
 .my_buttons_2:hover {   
   background-color: #c2e778;  
+}
+
+.my_buttons_2:focus {   
+  background-color: #a8d351;  
+  outline: none;
+  border: none;
 }
 
 // .main_ul{
@@ -322,6 +330,12 @@ body::-webkit-scrollbar-thumb{
   justify-content: space-between;
   margin-left:40px;
   margin-right:40px;
+  vertical-align: center;
+  align-items: center;
+  h1{
+    font-size: 2rem;
+    
+  }
   // margin-bottom:10px;
 }
 
@@ -339,6 +353,9 @@ body::-webkit-scrollbar-thumb{
   background-color:#1cb3c8 ;
   margin-top: 40px;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3);
+  h1{
+    font-size:2.5rem;
+  }
   h4{
     color:#87cfd8;
   }
@@ -383,7 +400,7 @@ body::-webkit-scrollbar-thumb{
     background-color: #ff9234;  
     border: none;
     color: white;
-    padding: 15px 40px;
+    padding: 13px 35px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -408,6 +425,7 @@ body::-webkit-scrollbar-thumb{
 
 .subject_tags_inner{
   display:flex;
+  flex-wrap: wrap;
   flex-direction: row;
   margin-top:10px;
 }
@@ -598,3 +616,107 @@ input:focus{
 
 
 
+.flip-card1 {
+  flex: 0 0 auto;
+  margin: 20px;
+  margin-bottom:40px;
+  background-color: transparent;
+  width: 200px;
+  height: 230px;
+  border: 2px;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner1 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card1:hover .flip-card-inner1 {
+  transform: rotateY(180deg);
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
+}
+
+/* Position the front and back side */
+.flip-card-front1, .flip-card-back1 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front1 {
+  background-color: #fbf9fa;;
+  color: black;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
+}
+
+/* Style the back side */
+.flip-card-back1 {
+  background-color: #fd5e53;
+  color: white;
+  transform: rotateY(180deg);
+  padding:30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
+}   
+
+.tutors_flexes1{
+  width: 100%;
+  padding:35px;
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  /* margin: -20px 0 0 0; */
+}
+
+.container_for_tutors{
+  margin-top: 20px;
+  box-shadow: inset 0 8px 16px 0 rgba(0, 0, 0, 0.5);
+  background-color: #1b262c;
+}
+
+.tutors_your_city{
+  display:flex;
+  background-color:#fbf9fa;
+  padding:0px 30px;
+  justify-content: space-between;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
+
+  h4{
+    font-family: 'Open Sans', sans-serif;
+    align-self:center;
+    padding:15px;
+    margin-bottom: 0px;
+    color:#dd2c00;
+  }
+  p{
+    
+    color:#bbbbbb;
+    font-size: 26px;
+    margin-bottom: 0px;
+    padding:15px;
+    font-family: 'Open Sans', sans-serif;
+  }
+}
+
+.tutors_names1
+{
+  font-size: 16px;
+   padding:10px;
+  color:#1b262c;
+  background-color: #fbf9fa;
+}

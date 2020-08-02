@@ -33,6 +33,48 @@
 
 
 
+<% if !@my_city_tutors.nil?%>
+    <% if !@my_city_tutors.empty?%>
+    <div class="container_for_tutors">
+    <div class="tutors_your_city">
+    <h4>Tutors in <%= current_user.city.name %>, <%= current_user.city.state_code %></h4>
+    <p><%= @my_city_tutors.count %> Tutors in your city.</p>
+    </div>
+    <div class="tutors_flexes1">
+        <% @my_city_tutors.each do |tutor| %>
+            <div class="flip-card1">
+                <div class="flip-card-inner1">
+                    <div class="flip-card-front1">
+                    <% if tutor.photo.attached? %>
+                        <img class="avatar_photo" src="<%= (url_for(tutor.photo)) %>" alt="Avatar" style="width:200px;height:200px;">
+                        <h4 class="tutors_names1"><%= tutor.full_name %></h4>
+                    <% else%>
+                        <img class="avatar_photo" src="https://fertilitynetworkuk.org/wp-content/uploads/2017/01/Facebook-no-profile-picture-icon-620x389.jpg" alt="Avatar" style="width:200px;height:200px;">
+                        <h4 class="tutors_names1"><%= tutor.full_name %></h4>
+                    <% end%>
+                    </div>
+                    <div class="flip-card-back1">
+                    <h5><%= tutor.full_name %></h5>
+                    <p><%= tutor.city.name %>, <%= tutor.city.state_code %></p>
+                    <%= button_to "Schedule",tutor ,class: "my_buttons_2" , method: :get%>
+                    </div>
+                </div>
+            </div>
+        <% end%>
+        </div>
+        </div>
+    <% else %>
+        <h1 class="Tutors_nothing_show">There's nothing to show!</h1>
+    <% end %>
+<% else %>
+    <h1 clss="Tutors_nothing_show">There's nothing to show!</h1>
+<% end%>
+<hr style="margin:20px;">
+
+
+
+
+
 
 <% if !@tutors.nil?%>
     <% if !@tutors.empty?%>
