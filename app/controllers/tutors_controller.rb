@@ -83,6 +83,9 @@ class TutorsController < ApplicationController
 
     def cancel_session
         @tutoring_session=TutoringSession.find(params[:tutoring_session_id])
+        if(params[:by_tutor])
+                session[:notification]<<[@tutoring_session.user_id,"#{@tutoring_session.tutor.full_name} canceled your reservation for #{@tutoring_session.start_time.utc.strftime("%H:%M")} "]
+        end
         @tutoring_session.destroy
         redirect_back(fallback_location: current_user)
     end
@@ -112,14 +115,13 @@ class TutorsController < ApplicationController
     def make_available
         @tutoring_session=TutoringSession.find(params[:tutoring_session_id])
         @tutoring_session.destroy
-        redirect_to current_tutor
+        redirect_to my_page_path(current_tutor)
     end
 
     def make_unavailable
         # @tutoring_session=TutoringSession.create(tutoring_session_params)
         @tutoring_session=TutoringSession.create(start_time:params[:tutoring_sessions][:start_time],tutor_id:params[:tutoring_sessions][:tutor_id],duration:params[:tutoring_sessions][:duration])
-        byebug
-        redirect_to current_tutor
+        redirect_to my_page_path(current_tutor)
     end
 
     private

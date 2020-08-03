@@ -21,4 +21,16 @@ class UserSessionsController < ApplicationController
         redirect_to root_path
     end
 
+    def dismiss_notifications
+        
+        
+        session[:notification].each do |notif|
+            bb=notif.join("/")
+            if(bb==params[:format])
+                session[:notification].delete(notif)
+            end
+        end
+        redirect_back(fallback_location: current_user)
+    end
+
 end

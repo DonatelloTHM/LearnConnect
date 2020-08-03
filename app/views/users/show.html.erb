@@ -16,6 +16,16 @@
 </div>
 </div>
 <hr>
+<% if session[:notification]%>
+<% session[:notification].each do |noti|%>
+<% if noti[0]==current_user.id%>
+<div class="notifications">
+<p><%= noti[1] %></p>
+<%= link_to 'X', dismiss_notifications_path(noti), method: :post %>
+</div>
+<% end%>
+<% end%>
+<% end%>
 <div class="day_of_week">
 <h1>Upcoming Tutoring Sessions</h1>
 </div>

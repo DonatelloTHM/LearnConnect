@@ -8,6 +8,9 @@ class TutorSessionsController < ApplicationController
         @tutor=Tutor.find_by(username:params[:username])
         if @tutor && @tutor.authenticate(params[:password])
             log_tutor_in(@tutor)
+            if(!session[:notification])
+            session[:notification]=[]
+            end
             # flash[:notice]="Welcome #{@tutor.full_name}, Login was succesful."
             redirect_to my_page_path(@tutor)
         else

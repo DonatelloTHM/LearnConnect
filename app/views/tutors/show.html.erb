@@ -54,16 +54,19 @@
                             <h1 class="cancel_by_me"><%=h+":"+m %></h1>
                             <h1 class="reserved_by_you">Reserved by You</h1>
                             <%= button_to "Cancel", cancel_session_path, method: :post,params:{tutoring_session_id: checked_value.id},class:"cancel_button"%>
+                            <% elsif checked_value.user==nil%>
+                                <h1><%=h+":"+m %></h1>
+                                <h1 class="timeslot_passed"> Tutor is not available!</h1>
                             <% else%>
                             <h1><%=h+":"+m %></h1>
                             <h1 class="reserved_by">RESERVED</h1>
                             <% end%>
                         <% else%>
-                        <h1><%=h+":"+m %></h1>
-                            <%= button_to "Schedule", schedule_session_path, method: :post,params:{tutoring_sessions:{user_id: current_user.id,tutor_id:@tutor.id , start_time:start_hour, duration:60  }},class:"my_buttons_1"%>
+                                    <h1><%=h+":"+m %></h1>
+                                    <%= button_to "Schedule", schedule_session_path, method: :post,params:{tutoring_sessions:{user_id: current_user.id,tutor_id:@tutor.id , start_time:start_hour, duration:60  }},class:"my_buttons_1"%>
                         <% end%>
                     <% else%>
-                    <h1><%=h+":"+m %></h1>
+                        <h1><%=h+":"+m %></h1>
                         <h1 class="timeslot_passed"> This timeslot passed.</h1>
                     <% end%>
         </div>

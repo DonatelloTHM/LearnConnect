@@ -47,7 +47,7 @@
                     <div class="flip-card-front1">
                     <% if tutor.photo.attached? %>
                         <img class="avatar_photo" src="<%= (url_for(tutor.photo)) %>" alt="Avatar" style="width:200px;height:200px;">
-                        <h4 class="tutors_names1"><%= tutor.full_name %></h4>
+                        <h4 class="tutors_names1"><%= tutor.full_name %>  <span style="color:#fc8973;"><%= tutor.age %></span></h4>
                     <% else%>
                         <img class="avatar_photo" src="https://fertilitynetworkuk.org/wp-content/uploads/2017/01/Facebook-no-profile-picture-icon-620x389.jpg" alt="Avatar" style="width:200px;height:200px;">
                         <h4 class="tutors_names1"><%= tutor.full_name %></h4>
@@ -85,7 +85,7 @@
                     <div class="flip-card-front">
                     <% if tutor.photo.attached? %>
                         <img class="avatar_photo" src="<%= (url_for(tutor.photo)) %>" alt="Avatar" style="width:200px;height:200px;">
-                        <h4 class="tutors_names"><%= tutor.full_name %></h4>
+                        <h4 class="tutors_names"><%= tutor.full_name %> <span style="color:#fc8973;"><%= tutor.age %></span></h4>
                     <% else%>
                         <img class="avatar_photo" src="https://fertilitynetworkuk.org/wp-content/uploads/2017/01/Facebook-no-profile-picture-icon-620x389.jpg" alt="Avatar" style="width:200px;height:200px;">
                         <h4 class="tutors_names"><%= tutor.full_name %></h4>

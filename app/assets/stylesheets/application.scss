@@ -720,3 +720,60 @@ input:focus{
   color:#1b262c;
   background-color: #fbf9fa;
 }
+
+.make_available{
+  background-color: #a1c45c;  
+    border: none;
+    color: white;
+    padding: 13px 35px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+}
+
+.make_available:hover{
+  background-color: #bfe673;  
+}
+
+.make_unavailable{
+  background-color: #aaaaaa;  
+    border: none;
+    color: white;
+    padding: 13px 35px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+}
+
+.make_unavailable:hover{
+  background-color: #979797;  
+}
+
+
+.notifications{
+  display: flex;
+  background-color: #fd5e53;
+  padding:15px;
+  color:white;
+  text-align: center;
+  margin-right: 20px;
+    margin-left:10px;
+    margin-bottom:5px;
+  p{
+    margin:auto;
+  }
+  a{
+    border-radius: 10rem;
+    padding:3px;
+    border:solid #fbf9fa;
+    font-family: "Open Sans";
+    color:black;
+    font-weight: 700;
+  }
+}
+
+
