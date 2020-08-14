@@ -1,81 +1,75 @@
 <div class="tutors_schedule_page">
-<div class="tutors_schedule_inner_page">
-<% if @tutor.photo.attached? %>
-                <img class="avatar_photo" src="<%= (url_for(@tutor.photo)) %>" alt="Avatar" style="width:150px;height:150px;">
-            <% else%>
-                <img class="avatar_photo" src="https://fertilitynetworkuk.org/wp-content/uploads/2017/01/Facebook-no-profile-picture-icon-620x389.jpg" alt="Avatar" style="width:200px;height:200px;">
-            <% end%>
-<div style="margin-left:40px;">
-<h1 id="tutor_full_name"><%= @tutor.full_name %></h1>
-<h3><%= @tutor.city.name %>, <%=@tutor.city.state_code%></h3>
-<h4 style="color:grey;"><%= @tutor.education_level %></h4>
+  <div class="tutors_schedule_inner_page">
+    <% if @tutor.photo.attached? %>
+      <img class="avatar_photo" src="<%= (url_for(@tutor.photo)) %>" alt="Avatar" style="width:150px;height:150px;">
+    <% else%>
+      <img class="avatar_photo" src="https://fertilitynetworkuk.org/wp-content/uploads/2017/01/Facebook-no-profile-picture-icon-620x389.jpg" alt="Avatar" style="width:200px;height:200px;">
+    <% end%>
+    <div style="margin-left:40px;">
+      <h1 id="tutor_full_name"><%= @tutor.full_name %></h1>
+      <h3><%= @tutor.city.name %>, <%=@tutor.city.state_code%></h3>
+      <h4 style="color:grey;"><%= @tutor.education_level %></h4>
+    </div>
+  </div>
+  <div class="subject_tags">
+    <h3>Subjects</h3>
+    <div class="subject_tags_inner">
+      <% @tutor.get_subjects.each do |subject|%>
+        <h3 class="inner_subject_tags"><%=subject%></h3>
+      <% end%>
+    </div>
+  </div>
 </div>
-</div>
-<div class="subject_tags">
-<h3>Subjects</h3>
-<div class="subject_tags_inner">
-<% @tutor.get_subjects.each do |subject|%>
-<h3 class="inner_subject_tags"><%=subject%></h3>
-<% end%>
-</div>
-</div>
-
-            
-</div>
-
-
 <hr>
-
-<% n=1 %>
+<% n=0 %>
 <% d=Date.today%>
-<% while n<=8 do %>
-<div class="day_of_week">
-<h4 style="align-self:center;">Timeslots</h4>
-<% if n==1%>
-<h1>Today</h1>
-<%else%>
-<h1><%= d.strftime("%A") %></h1>
-<% end%>
-<h4 style="align-self:center;"><%= d %></h4>
-</div>
-
-<% if d.strftime("%A") != "Saturday" && d.strftime("%A") != "Sunday"%>
-<% @tutor.show_tutoring_sessions.each do |hour|%>
-        <% h=hour[0,2] %>
-        <% m=hour[2,4]%>
-        <div class="tutoring_sessions_times">
+<% while n<=7 do %>
+  <div class="day_of_week">
+    <h4 style="align-self:center;">Timeslots</h4>
+    <% if n==1%>
+      <h1>Today</h1>
+    <%else%>
+      <h1><%= d.strftime("%A") %></h1>
+    <% end%>
+    <h4 style="align-self:center;"><%= d %></h4>
+  </div>
+  <% if d.strftime("%A") != "Saturday" && d.strftime("%A") != "Sunday"%>
+    <% @tutor.show_tutoring_sessions.each do |hour|%>
+      <% h=hour[0,2] %>
+      <% m=hour[2,4]%>
+      <div class="tutoring_sessions_times">
         <% start_hour=DateTime.new(d.year,d.month,d.day,h.to_i,m.to_i) %>
         <% timenow=DateTime.now %>
         <% timenow=DateTime.new(timenow.year,timenow.month,timenow.day,timenow.hour,timenow.min) %>
         <% checked_value=TutoringSession.find_by(start_time:start_hour,tutor_id:@tutor.id ) %>
-                    <% if start_hour >= timenow%>
-                        <% if checked_value%>
-                            <% if checked_value.user==current_user%>
-                            <h1 class="cancel_by_me"><%=h+":"+m %></h1>
-                            <h1 class="reserved_by_you">Reserved by You</h1>
-                            <%= button_to "Cancel", cancel_session_path, method: :post,params:{tutoring_session_id: checked_value.id},class:"cancel_button"%>
-                            <% elsif checked_value.user==nil%>
-                                <h1><%=h+":"+m %></h1>
-                                <h1 class="timeslot_passed"> Tutor is not available!</h1>
-                            <% else%>
-                            <h1><%=h+":"+m %></h1>
-                            <h1 class="reserved_by">RESERVED</h1>
-                            <% end%>
-                        <% else%>
-                                    <h1><%=h+":"+m %></h1>
-                                    <%= button_to "Schedule", schedule_session_path, method: :post,params:{tutoring_sessions:{user_id: current_user.id,tutor_id:@tutor.id , start_time:start_hour, duration:60  }},class:"my_buttons_1"%>
-                        <% end%>
-                    <% else%>
-                        <h1><%=h+":"+m %></h1>
-                        <h1 class="timeslot_passed"> This timeslot passed.</h1>
-                    <% end%>
-        </div>
-<% end%>
-<% else%>
+        <% if start_hour >= timenow%>
+          <% if checked_value%>
+            <% if checked_value.user==current_user%>
+              <h1 class="cancel_by_me"><%=h+":"+m %></h1>
+              <h1 class="reserved_by_you">Reserved by You</h1>
+              <%= button_to "Cancel", cancel_session_path, method: :post,params:{tutoring_session_id: checked_value.id},class:"cancel_button"%>
+            <% elsif checked_value.user==nil%>
+              <h1><%=h+":"+m %></h1>
+              <h1 class="timeslot_passed"> Tutor is not available!</h1>
+            <% else%>
+              <h1><%=h+":"+m %></h1>
+              <h1 class="reserved_by">RESERVED</h1>
+            <% end%>
+          <% else%>
+            <h1><%=h+":"+m %></h1>
+            <%= button_to "Schedule", schedule_session_path, method: :post,params:{tutoring_sessions:{user_id: current_user.id,tutor_id:@tutor.id , start_time:start_hour, duration:60  }},class:"my_buttons_1"%>
+          <% end%>
+        <% else%>
+          <h1><%=h+":"+m %></h1>
+          <h1 class="timeslot_passed"> This timeslot passed.</h1>
+        <% end%>
+      </div>
+    <% end%>
+  <% else%>
     <div class="tutoring_sessions_times">
-        <h1 style="margin:auto; color:#e8e4e1;">Tutors are off on the weekends!</h1>
+      <h1 style="margin:auto; color:#e8e4e1;">Tutors are off on the weekends!</h1>
     </div>
-<% end%>
-<% d+=1%>
-<% n+=1 %>
+  <% end%>
+  <% d+=1%>
+  <% n+=1 %>
 <% end%>

@@ -1,110 +1,98 @@
 <div class="form_container"><%= simple_form_for :search, url: tutors_path, method: "GET", html: { class: 'form-horizontal form-group' } do |f| %>
     <div class="city_state_filter">
-    <div id="state_filter">
-    <%= f.label :state , required: false ,class:"mr-3" %>
-    <%= f.input :state, input_html: {value: ""},input_html: {list:"states_autocomplete"},label: false ,required: false%>  
-            <datalist id="states_autocomplete">
-                <% City.all.map{|ins| ins.state}.uniq.each do |state| %>
-                <option value="<%= state %>">
-                <% end %>
+      <div id="state_filter">
+        <%= f.label :state , required: false ,class:"mr-3" %>
+        <%= f.input :state, input_html: {value: ""},input_html: {list:"states_autocomplete"},label: false ,required: false%>
+        <datalist id="states_autocomplete">
+          <% City.all.map{|ins| ins.state}.uniq.each do |state| %>
+            <option value="<%= state %>">
+            <% end %>
+          </datalist>
+        </div>
+        <div id="city_filter">
+          <%= f.label :city,required:false, class:"mr-3" %>
+          <%= f.input :city, input_html: {value: ""},input_html: {list:"cities_autocomplete"},label:false, required: false%>
+          <datalist id="cities_autocomplete">
+            <% City.all.map{|ins| ins.name}.uniq.each do |city| %>
+              <option value="<%= city %>">
+              <% end %>
             </datalist>
-            </div>
-    <div id="city_filter">
-    <%= f.label :city,required:false, class:"mr-3" %>
-    <%= f.input :city, input_html: {value: ""},input_html: {list:"cities_autocomplete"},label:false, required: false%>  
-            <datalist id="cities_autocomplete">
-                <% City.all.map{|ins| ins.name}.uniq.each do |city| %>
-                <option value="<%= city %>">
-                <% end %>
-            </datalist> 
-            </div>
+          </div>
+        </div>
+        <hr>
+        <%=f.label :subjects ,required:false  %>
+        <%= f.input :subjects,  collection: Tutor.get_subjects, as: :check_boxes, input_html: {class: "checkbox-inline"},item_label_class: 'check_labels',label: false, required: false %>
+        <hr>
+        <div class="clear_submit_buttons">
+          <%= f.submit "Search", class: "my_buttons" %>
+          <%= button_to "Clear Filter", tutors_path, method: :get ,class: "my_buttons_1",id: "clear_filter"%>
+        </div>
+      <% end %>
     </div>
-    <hr>
-    <%=f.label :subjects ,required:false  %>
-<%= f.input :subjects,  collection: Tutor.get_subjects, as: :check_boxes, input_html: {class: "checkbox-inline"},item_label_class: 'check_labels',label: false, required: false %>
-<hr>
- <div class="clear_submit_buttons">
-  <%= f.submit "Search", class: "my_buttons" %>
-  <%= button_to "Clear Filter", tutors_path, method: :get ,class: "my_buttons_1",id: "clear_filter"%>
-  </div>
-<% end %>
-
-</div>
-
-
-
-<% if !@my_city_tutors.nil?%>
-    <% if !@my_city_tutors.empty?%>
-    <div class="container_for_tutors">
-    <div class="tutors_your_city">
-    <h4>Tutors in <%= current_user.city.name %>, <%= current_user.city.state_code %></h4>
-    <p><%= @my_city_tutors.count %> Tutors in your city.</p>
-    </div>
-    <div class="tutors_flexes1">
-        <% @my_city_tutors.each do |tutor| %>
-            <div class="flip-card1">
+    <% if !@my_city_tutors.nil?%>
+      <% if !@my_city_tutors.empty?%>
+        <div class="container_for_tutors">
+          <div class="tutors_your_city">
+            <h4>Tutors in <%= current_user.city.name %>, <%= current_user.city.state_code %></h4>
+            <p><%= @my_city_tutors.count %> Tutors in your city.</p>
+          </div>
+          <div class="tutors_flexes1">
+            <% @my_city_tutors.each do |tutor| %>
+              <div class="flip-card1">
                 <div class="flip-card-inner1">
-                    <div class="flip-card-front1">
+                  <div class="flip-card-front1">
                     <% if tutor.photo.attached? %>
-                        <img class="avatar_photo" src="<%= (url_for(tutor.photo)) %>" alt="Avatar" style="width:200px;height:200px;">
-                        <h4 class="tutors_names1"><%= tutor.full_name %>  <span style="color:#fc8973;"><%= tutor.age %></span></h4>
+                      <img class="avatar_photo" src="<%= (url_for(tutor.photo)) %>" alt="Avatar" style="width:200px;height:200px;">
+                      <h4 class="tutors_names1"><%= tutor.full_name %>  <span style="color:#fc8973;"><%= tutor.age %></span></h4>
                     <% else%>
-                        <img class="avatar_photo" src="https://fertilitynetworkuk.org/wp-content/uploads/2017/01/Facebook-no-profile-picture-icon-620x389.jpg" alt="Avatar" style="width:200px;height:200px;">
-                        <h4 class="tutors_names1"><%= tutor.full_name %></h4>
+                      <img class="avatar_photo" src="https://fertilitynetworkuk.org/wp-content/uploads/2017/01/Facebook-no-profile-picture-icon-620x389.jpg" alt="Avatar" style="width:200px;height:200px;">
+                      <h4 class="tutors_names1"><%= tutor.full_name %></h4>
                     <% end%>
-                    </div>
-                    <div class="flip-card-back1">
+                  </div>
+                  <div class="flip-card-back1">
                     <h5><%= tutor.full_name %></h5>
                     <p><%= tutor.city.name %>, <%= tutor.city.state_code %></p>
                     <%= button_to "Schedule",tutor ,class: "my_buttons_2" , method: :get%>
-                    </div>
+                  </div>
                 </div>
-            </div>
-        <% end%>
+              </div>
+            <% end%>
+          </div>
         </div>
-        </div>
-    <% else %>
+      <% else %>
         <h1 class="Tutors_nothing_show">There's nothing to show!</h1>
-    <% end %>
-<% else %>
-    <h1 clss="Tutors_nothing_show">There's nothing to show!</h1>
-<% end%>
-<hr style="margin:20px;">
-
-
-
-
-
-
-<% if !@tutors.nil?%>
-    <% if !@tutors.empty?%>
-    <div class="tutors_flexes">
-        <% @tutors.each do |tutor| %>
+      <% end %>
+    <% else %>
+      <h1 clss="Tutors_nothing_show">There's nothing to show!</h1>
+    <% end%>
+    <hr style="margin:20px;">
+    <% if !@tutors.nil?%>
+      <% if !@tutors.empty?%>
+        <div class="tutors_flexes">
+          <% @tutors.each do |tutor| %>
             <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                    <% if tutor.photo.attached? %>
-                        <img class="avatar_photo" src="<%= (url_for(tutor.photo)) %>" alt="Avatar" style="width:200px;height:200px;">
-                        <h4 class="tutors_names"><%= tutor.full_name %> <span style="color:#fc8973;"><%= tutor.age %></span></h4>
-                    <% else%>
-                        <img class="avatar_photo" src="https://fertilitynetworkuk.org/wp-content/uploads/2017/01/Facebook-no-profile-picture-icon-620x389.jpg" alt="Avatar" style="width:200px;height:200px;">
-                        <h4 class="tutors_names"><%= tutor.full_name %></h4>
-                    <% end%>
-                    </div>
-                    <div class="flip-card-back">
-                    <h5><%= tutor.full_name %></h5>
-                    <p><%= tutor.city.name %>, <%= tutor.city.state_code %></p>
-                    <%= button_to "Schedule",tutor ,class: "my_buttons_2" , method: :get%>
-                    </div>
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <% if tutor.photo.attached? %>
+                    <img class="avatar_photo" src="<%= (url_for(tutor.photo)) %>" alt="Avatar" style="width:200px;height:200px;">
+                    <h4 class="tutors_names"><%= tutor.full_name %> <span style="color:#fc8973;"><%= tutor.age %></span></h4>
+                  <% else%>
+                    <img class="avatar_photo" src="https://fertilitynetworkuk.org/wp-content/uploads/2017/01/Facebook-no-profile-picture-icon-620x389.jpg" alt="Avatar" style="width:200px;height:200px;">
+                    <h4 class="tutors_names"><%= tutor.full_name %></h4>
+                  <% end%>
                 </div>
+                <div class="flip-card-back">
+                  <h5><%= tutor.full_name %></h5>
+                  <p><%= tutor.city.name %>, <%= tutor.city.state_code %></p>
+                  <%= button_to "Schedule",tutor ,class: "my_buttons_2" , method: :get%>
+                </div>
+              </div>
             </div>
-        <% end%>
+          <% end%>
         </div>
-    <% else %>
+      <% else %>
         <h1 class="Tutors_nothing_show">There's nothing to show!</h1>
-    <% end %>
-<% else %>
-    <h1 clss="Tutors_nothing_show">There's nothing to show!</h1>
-<% end%>
-
-
+      <% end %>
+    <% else %>
+      <h1 clss="Tutors_nothing_show">There's nothing to show!</h1>
+    <% end%>

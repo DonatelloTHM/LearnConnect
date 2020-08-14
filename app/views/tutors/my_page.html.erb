@@ -1,132 +1,125 @@
 <div class="tutors_schedule_page">
-<div class="tutors_schedule_inner_page">
-            <% if @tutor.photo.attached? %>
-                <img class="avatar_photo" src="<%= (url_for(@tutor.photo)) %>" alt="Avatar" style="width:150px;height:150px;">
-            <% else%>
-                <img class="avatar_photo" src="https://fertilitynetworkuk.org/wp-content/uploads/2017/01/Facebook-no-profile-picture-icon-620x389.jpg" alt="Avatar" style="width:200px;height:200px;">
-            <% end%>
-<div style="margin-left:40px;">
-<h1 id="tutor_full_name"><%= @tutor.full_name %></h1>
-<h3><%= @tutor.city.name %>, <%=@tutor.city.state_code%></h3>
-<h4 style="color:grey;"><%= @tutor.education_level %></h4>
-</div>
-</div>
-<%= button_to "Edit info", edit_tutor_path(@tutor), method: :get,class:"my_buttons_1"%>
+  <div class="tutors_schedule_inner_page">
+    <% if @tutor.photo.attached? %>
+      <img class="avatar_photo" src="<%= (url_for(@tutor.photo)) %>" alt="Avatar" style="width:150px;height:150px;">
+    <% else%>
+      <img class="avatar_photo" src="https://fertilitynetworkuk.org/wp-content/uploads/2017/01/Facebook-no-profile-picture-icon-620x389.jpg" alt="Avatar" style="width:200px;height:200px;">
+    <% end%>
+    <div style="margin-left:40px;">
+      <h1 id="tutor_full_name"><%= @tutor.full_name %></h1>
+      <h3><%= @tutor.city.name %>, <%=@tutor.city.state_code%></h3>
+      <h4 style="color:grey;"><%= @tutor.education_level %></h4>
+    </div>
+  </div>
+  <%= button_to "Edit info", edit_tutor_path(@tutor), method: :get,class:"my_buttons_1"%>
 </div>
 </div>
 <hr>
 <div class="day_of_week">
-<h1>Upcoming Tutoring Sessions</h1>
+  <h1>Upcoming Tutoring Sessions</h1>
 </div>
-
-        <% timenow=DateTime.now %>
-        <% timenow=DateTime.new(timenow.year,timenow.month,timenow.day,timenow.hour,timenow.min) %>
-        <% checked_value=TutoringSession.where("start_time >= ?", timenow)%>
-        <% upcoming_session=checked_value.where(tutor_id:@tutor) %>
-
-        <% upcoming_session.each do |tutoring_session|%>
-            <% if tutoring_session.user != nil%>
-        <div class="tutoring_sessions_times">
+<% timenow=DateTime.now %>
+<% timenow=DateTime.new(timenow.year,timenow.month,timenow.day,timenow.hour,timenow.min) %>
+<% checked_value=TutoringSession.where("start_time >= ?", timenow)%>
+<% upcoming_session=checked_value.where(tutor_id:@tutor) %>
+<% count=0%>
+<% if !upcoming_session.empty?%>
+  <% upcoming_session.each do |tutoring_session|%>
+    <% if tutoring_session.user != nil%>
+      <div class="tutoring_sessions_times">
         <div class="tutoring_session_name_photo">
-            <% if tutoring_session.tutor.photo.attached? %>
-                <img class="avatar_photo_smaller" src="<%= (url_for(tutoring_session.user.photo)) %>" alt="Avatar">
-            <% else%>
-                <img class="avatar_photo_smaller" src="https://fertilitynetworkuk.org/wp-content/uploads/2017/01/Facebook-no-profile-picture-icon-620x389.jpg" alt="Avatar">
-            <% end%>
-            <h1><%= tutoring_session.user.full_name %></h1></div>
-            <h1><%= tutoring_session.start_time.utc.strftime("%A, ") %> at <%= tutoring_session.start_time.utc.strftime("%H:%M") %></h1>
-            <%= button_to "Cancel", cancel_session_path, method: :post,params:{tutoring_session_id: tutoring_session.id,by_tutor:true},class:"cancel_button"%>
+          <% if tutoring_session.tutor.photo.attached? %>
+            <img class="avatar_photo_smaller" src="<%= (url_for(tutoring_session.user.photo)) %>" alt="Avatar">
+          <% else%>
+            <img class="avatar_photo_smaller" src="https://fertilitynetworkuk.org/wp-content/uploads/2017/01/Facebook-no-profile-picture-icon-620x389.jpg" alt="Avatar">
+          <% end%>
+          <h1><%= tutoring_session.user.full_name %></h1>
         </div>
-         <% end%>
-        <% end%>
-
+        <h1><%= tutoring_session.start_time.utc.strftime("%A, ") %> at <%= tutoring_session.start_time.utc.strftime("%H:%M") %></h1>
+        <%= button_to "Cancel", cancel_session_path, method: :post,params:{tutoring_session_id: tutoring_session.id,by_tutor:true},class:"cancel_button"%>
+      </div>
+    <% else%>
+      <% count+=1 %>
+    <% end%>
+  <% end%>
+<% else%>
+  <div class="tutoring_sessions_times">
+    <h1 style="margin:auto; color:#e8e4e1;">No Upcoming Tutoring Sessions</h1>
+  </div>
+<% end%>
+<% if count>0%>
+  <div class="tutoring_sessions_times">
+    <h1 style="margin:auto; color:#e8e4e1;">No Upcoming Tutoring Sessions</h1>
+  </div>
+<% end%>
 <div class="previous_tutoring_sessions">
-<h1>Previous Tutoring Sessions</h1>
+  <h1>Previous Tutoring Sessions</h1>
 </div>
-
-        <% timenow=DateTime.now %>
-        <% timenow=DateTime.new(timenow.year,timenow.month,timenow.day,timenow.hour,timenow.min) %>
-        <% checked_value=TutoringSession.where("start_time < ?", timenow)%>
-        <% upcoming_session=checked_value.where(tutor_id:@tutor) %>
-        <% upcoming_session.each do |tutoring_session|%>
-            <% if tutoring_session.user != nil%>
-        <div class="tutoring_sessions_times">
-        <div class="tutoring_session_name_photo">
+<% timenow=DateTime.now %>
+<% timenow=DateTime.new(timenow.year,timenow.month,timenow.day,timenow.hour,timenow.min) %>
+<% checked_value=TutoringSession.where("start_time < ?", timenow)%>
+<% upcoming_session=checked_value.where(tutor_id:@tutor) %>
+<% upcoming_session.each do |tutoring_session|%>
+  <% if tutoring_session.user != nil%>
+    <div class="tutoring_sessions_times">
+      <div class="tutoring_session_name_photo">
         <% if tutoring_session.user.photo.attached? %>
-                <img class="avatar_photo_smaller" src="<%= (url_for(tutoring_session.user.photo)) %>" alt="Avatar">
-            <% else%>
-                <img class="avatar_photo_smaller" src="https://fertilitynetworkuk.org/wp-content/uploads/2017/01/Facebook-no-profile-picture-icon-620x389.jpg" alt="Avatar">
-            <% end%>
-            <h1><%= tutoring_session.user.full_name %></h1></div>
-            <h1><%= tutoring_session.start_time.utc.strftime("%A, %B %-d") %> at <%= tutoring_session.start_time.utc.strftime("%H:%M") %></h1>
-        </div>
+          <img class="avatar_photo_smaller" src="<%= (url_for(tutoring_session.user.photo)) %>" alt="Avatar">
+        <% else%>
+          <img class="avatar_photo_smaller" src="https://fertilitynetworkuk.org/wp-content/uploads/2017/01/Facebook-no-profile-picture-icon-620x389.jpg" alt="Avatar">
         <% end%>
-        <% end%>
-
-
-
-
+        <h1><%= tutoring_session.user.full_name %></h1>
+      </div>
+      <h1><%= tutoring_session.start_time.utc.strftime("%A, %B %-d") %> at <%= tutoring_session.start_time.utc.strftime("%H:%M") %></h1>
+    </div>
+  <% end%>
+<% end%>
 <% n=1 %>
 <% d=Date.today%>
 <% while n<=8 do %>
-<div class="day_of_week">
-<h4 style="align-self:center;">Timeslots</h4>
-<% if n==1%>
-<h1>Today</h1>
-<%else%>
-<h1><%= d.strftime("%A") %></h1>
-<% end%>
-<h4 style="align-self:center;"><%= d %></h4>
-</div>
-
-<% if d.strftime("%A") != "Saturday" && d.strftime("%A") != "Sunday"%>
-<% @tutor.show_tutoring_sessions.each do |hour|%>
-        <% h=hour[0,2] %>
-        <% m=hour[2,4]%>
-        <div class="tutoring_sessions_times">
+  <div class="day_of_week">
+    <h4 style="align-self:center;">Timeslots</h4>
+    <% if n==1%>
+      <h1>Today</h1>
+    <%else%>
+      <h1><%= d.strftime("%A") %></h1>
+    <% end%>
+    <h4 style="align-self:center;"><%= d %></h4>
+  </div>
+  <% if d.strftime("%A") != "Saturday" && d.strftime("%A") != "Sunday"%>
+    <% @tutor.show_tutoring_sessions.each do |hour|%>
+      <% h=hour[0,2] %>
+      <% m=hour[2,4]%>
+      <div class="tutoring_sessions_times">
         <% start_hour=DateTime.new(d.year,d.month,d.day,h.to_i,m.to_i) %>
         <% timenow=DateTime.now %>
         <% timenow=DateTime.new(timenow.year,timenow.month,timenow.day,timenow.hour,timenow.min) %>
         <% checked_value=TutoringSession.find_by(start_time:start_hour,tutor_id:@tutor.id ) %>
-                    <% if start_hour >= timenow%>
-                        <% if checked_value%>
-                            <% if checked_value.user != nil%>
-                                <h1><%=h+":"+m %></h1>
-                                <h1 class="reserved_by">RESERVED</h1>
-                            <% else%>
-                                <h1><%=h+":"+m %></h1>
-                                <h1 class="timeslot_passed"> You're unavailable</h1>
-                                <%= button_to "Make available", available_session_path, method: :post,params:{tutoring_session_id: checked_value.id},class:"make_available"%>
-                            <% end%>
-                        <% else%>
-                        <h1><%=h+":"+m %></h1>
-                            <%= button_to "Make unavailable", unavailable_session_path, method: :post,params:{tutoring_sessions:{tutor_id:@tutor.id , start_time:start_hour, duration:60  }},class:"make_unavailable"%>
-                        <% end%>
-                    <% else%>
-                    <h1><%=h+":"+m %></h1>
-                        <h1 class="timeslot_passed"> This timeslot passed.</h1>
-                    <% end%>
-        </div>
-<% end%>
-<% else%>
+        <% if start_hour >= timenow%>
+          <% if checked_value%>
+            <% if checked_value.user != nil%>
+              <h1><%=h+":"+m %></h1>
+              <h1 class="reserved_by">RESERVED</h1>
+            <% else%>
+              <h1><%=h+":"+m %></h1>
+              <h1 class="timeslot_passed"> You're unavailable</h1>
+              <%= button_to "Make available", available_session_path, method: :post,params:{tutoring_session_id: checked_value.id},class:"make_available"%>
+            <% end%>
+          <% else%>
+            <h1><%=h+":"+m %></h1>
+            <%= button_to "Make unavailable", unavailable_session_path, method: :post,params:{tutoring_sessions:{tutor_id:@tutor.id , start_time:start_hour, duration:60  }},class:"make_unavailable"%>
+          <% end%>
+        <% else%>
+          <h1><%=h+":"+m %></h1>
+          <h1 class="timeslot_passed"> This timeslot passed.</h1>
+        <% end%>
+      </div>
+    <% end%>
+  <% else%>
     <div class="tutoring_sessions_times">
-        <h1 style="margin:auto; color:#e8e4e1;">Tutors are off on the weekends!</h1>
+      <h1 style="margin:auto; color:#e8e4e1;">Tutors are off on the weekends!</h1>
     </div>
+  <% end%>
+  <% d+=1%>
+  <% n+=1 %>
 <% end%>
-<% d+=1%>
-<% n+=1 %>
-<% end%>
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -13,17 +13,17 @@
 
 
  */
- /* .square {
+/* .square {
     position: relative;
     width: 300px;     
     height: 300px;
     overflow: hidden;
  } */
- @import "bootstrap";
+@import "bootstrap";
 
- :root {
+:root {
   font-size: 16px;
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   --text-primary: #b6b6b6;
   --text-secondary: #ececec;
   --bg-primary: #3c4245;
@@ -31,124 +31,126 @@
   --transition-speed: 600ms;
 }
 
- body{
-   background-color:#eeeeee;
- }
-
-
-::-webkit-scrollbar{
-  width:0.5rem;
-}
-::-webkit-scrollbar-track{
-  background:#1e1e24;
-}
-::-webkit-scrollbar-thumb{
-  background: #f8776d
+body {
+  background-color: #eeeeee;
 }
 
- .avatar_photo {
-        width: 200px; /* width of container */
-        height: 200px; /* height of container */
-        object-fit: cover;
-    }
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+::-webkit-scrollbar-track {
+  background: #1e1e24;
+}
+::-webkit-scrollbar-thumb {
+  background: #f8776d;
+}
+
+.avatar_photo {
+  width: 200px; /* width of container */
+  height: 200px; /* height of container */
+  object-fit: cover;
+}
 
 .avatar_photo_smaller {
   border-radius: 50%;
   width: 40px; /* width of container */
   height: 40px; /* height of container */
   object-fit: cover;
-  }
+}
 
-
- /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .flip-card {
-    margin: 20px;
-    margin-bottom:40px;
-    background-color: transparent;
-    width: 200px;
-    height: 230px;
-    perspective: 1000px; /* Remove this if you don't want the 3D effect */
-  }
-  
-  /* This container is needed to position the front and back side */
-  .flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
-  }
-  
-  /* Do an horizontal flip when you move the mouse over the flip box container */
-  .flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
-  }
-  
-  /* Position the front and back side */
-  .flip-card-front, .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden; /* Safari */
-    backface-visibility: hidden;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
-  }
-  
-  /* Style the front side (fallback if image is missing) */
-  .flip-card-front {
-    background-color: #bbb;
-    color: black;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
-  }
-  
-  /* Style the back side */
-  .flip-card-back {
-    background-color: #fd5e53;
-    color: white;
-    transform: rotateY(180deg);
-    padding:30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
-  }   
+  margin: 16px;
+  margin-bottom: 40px;
+  background-color: transparent;
+  width: 200px;
+  height: 230px;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
 
-  .tutors_flexes{
-    margin-left: 20px;
-    margin-top: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    padding:4px;
-    /* margin: -20px 0 0 0; */
-  }
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
 
-  .form_container{
-    background-color: #fbf9fa;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
-    padding:30px;
-    padding-bottom: 10px;
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Position the front and back side */
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Style the back side */
+.flip-card-back {
+  background-color: #fd5e53;
+  color: white;
+  transform: rotateY(180deg);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
+
+.tutors_flexes {
+  margin-left: 20px;
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 4px;
+  /* margin: -20px 0 0 0; */
+}
+
+.form_container {
+  background-color: #fbf9fa;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  padding-bottom: 10px;
+}
+.checkbox {
+  display: flex;
+  font-size: 14px;
+  margin-right: 12px;
+  background-color: #ff5f40;
+  color: honeydew;
+  cursor: pointer;
+
+  padding: 10px;
+  padding-bottom: 2px;
+  padding-right: 14px;
+  margin-bottom: 10px;
+  transition-duration: 0.2s;
+  label {
+    margin-right: 4px;
   }
-  .checkbox{
-    display: flex;
-    font-size: 14px;
-    margin-right:12px;
-    background-color: #ff5f40;
-   color: honeydew;
-   
-   padding:10px;
-   padding-bottom: 2px;
-   padding-right: 14px;
-   margin-bottom: 10px;
-   transition-duration: 0.2s;
-   label{margin-right:4px;}
-   input[type="checkbox"]{
-     margin-right: -7px;
+  input[type="checkbox"] {
+    margin-right: -7px;
     width: 11px;
     height: 11px;
-    opacity:0;
+    opacity: 0;
     background: white;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -157,13 +159,13 @@
     position: relative;
     left: -5px;
     top: 5px;
-    outline:none;
-    transition:0.5s;
-   }
-   input:checked[type="checkbox"]{
+    outline: none;
+    transition: 0.5s;
+  }
+  input:checked[type="checkbox"] {
     width: 11px;
     height: 11px;
-    opacity:1;
+    opacity: 1;
     background: greenyellow;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -172,65 +174,65 @@
     outline: none;
     left: -5px;
     top: 5px;
-   }
   }
-
-  .checkbox:hover{
-    display: flex;
-    font-size: 14px;
-    margin-right:12px;
-    background-color: #fc8973;
-   color: honeydew;
-   padding:10px;
-   padding-bottom: 2px;
-   padding-right: 14px;
-   margin-bottom: 10px;
-  }
-
-  .checkbox label, .checkbox input[type=checkbox]{
-    margin-left: 5px;
 }
 
- .tutors_names{
-   font-size: 16px;
-   color:white;
-   padding:10px;
-   background-color: #222831;
- }
+.checkbox:hover {
+  display: flex;
+  font-size: 14px;
+  margin-right: 12px;
+  background-color: #fc8973;
+  color: honeydew;
+  padding: 10px;
+  padding-bottom: 2px;
+  padding-right: 14px;
+  margin-bottom: 10px;
+}
 
- .clear_submit_buttons{
-   padding-top: 10px;
-   display:flex;
-   flex-wrap: wrap;
- }
+.checkbox label,
+.checkbox input[type="checkbox"] {
+  margin-left: 5px;
+  cursor: pointer;
+}
 
- #clear_filter{
-   margin-left: 15px;
- }
- .check_boxes{
-   display: flex;
-   flex-wrap: wrap;
-   flex-direction: row;
-   
- }
+.tutors_names {
+  font-size: 16px;
+  color: white;
+  padding: 10px;
+  background-color: #222831;
+}
 
- .city_state_filter{
-   display:flex;
-   flex-wrap: wrap;
- }
+.clear_submit_buttons {
+  padding-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
 
- #state_filter{
-   margin-right: 30px;
-   display: flex;
-   margin-bottom: 5px;
- }
+#clear_filter {
+  margin-left: 15px;
+}
+.check_boxes {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
 
- #city_filter{
-   display:flex;
- }
+.city_state_filter {
+  display: flex;
+  flex-wrap: wrap;
+}
 
+#state_filter {
+  margin-right: 30px;
+  display: flex;
+  margin-bottom: 5px;
+}
 
- .my_buttons {
+#city_filter {
+  display: flex;
+}
+
+.my_buttons {
   background-color: #a1c45a;
   border: none;
   color: white;
@@ -246,8 +248,8 @@
   background-color: #c2e778;
 }
 
-.my_buttons_1 {   
-  background-color: #fd5e53;  
+.my_buttons_1 {
+  background-color: #fd5e53;
   border: none;
   color: white;
   padding: 13px 35px;
@@ -258,17 +260,17 @@
   transition-duration: 0.4s;
 }
 
-.my_buttons_1:hover {   
-  background-color: #fa968f;  
+.my_buttons_1:hover {
+  background-color: #fa968f;
 }
 
-.my_buttons_1:active {   
+.my_buttons_1:active {
   background-color: #6b2b26;
-  outline: none;  
+  outline: none;
 }
 
-.my_buttons_2 {   
-  background-color: #a1c45c;  
+.my_buttons_2 {
+  background-color: #a1c45c;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -279,12 +281,12 @@
   transition-duration: 0.4s;
 }
 
-.my_buttons_2:hover {   
-  background-color: #c2e778;  
+.my_buttons_2:hover {
+  background-color: #c2e778;
 }
 
-.my_buttons_2:focus {   
-  background-color: #a8d351;  
+.my_buttons_2:focus {
+  background-color: #a8d351;
   outline: none;
   border: none;
 }
@@ -307,131 +309,128 @@
   width: 80px; /* width of container */
   height: 80px; /* height of container */
   object-fit: cover;
-  position:fixed;
-  right:1rem;
-  top:20;
+  position: fixed;
+  right: 1rem;
+  top: 20;
   bottom: 1rem;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.5);
   z-index: 1;
   transition: 0.3s;
 }
-.thumbnailphoto:hover{
-  width:130px;
-  height:130px; 
+.thumbnailphoto:hover {
+  width: 130px;
+  height: 130px;
   background-color: grey;
 }
 
-.tutoring_sessions_times{
+.tutoring_sessions_times {
   display: flex;
   background-color: #ffffff;
   padding: 20px;
   flex-wrap: wrap;
-  color:#888888;
+  color: #888888;
   justify-content: space-between;
-  margin-left:40px;
-  margin-right:40px;
+  margin-left: 40px;
+  margin-right: 40px;
   vertical-align: center;
   align-items: center;
-  h1{
+  h1 {
     font-size: 2rem;
-    
   }
   // margin-bottom:10px;
 }
 
-.tutoring_sessions_times:nth-child(odd){
+.tutoring_sessions_times:nth-child(odd) {
   background-color: #f4f4f4;
-  color:#323232;
+  color: #323232;
 }
 
-.day_of_week{
-  padding:20px;
-  display:flex;
-  justify-content: space-between;;
-  color:white;
+.day_of_week {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  color: white;
   align-content: center;
-  background-color:#1cb3c8 ;
+  background-color: #1cb3c8;
   margin-top: 40px;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3);
-  h1{
-    font-size:2.5rem;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
+  h1 {
+    font-size: 2.5rem;
   }
-  h4{
-    color:#87cfd8;
+  h4 {
+    color: #87cfd8;
   }
 }
 
-.reserved_by{
-  color:#eb4559;
-  font-size:30px;
+.reserved_by {
+  color: #eb4559;
+  font-size: 30px;
   align-self: center;
   padding-right: 10px;
 }
-.timeslot_passed{
-  color:#e6e6e6;
+.timeslot_passed {
+  color: #e6e6e6;
 }
 
-.Tutors_nothing_show{
-  display:flex;
-  justify-content:center;
-  padding:40px;
+.Tutors_nothing_show {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
   background-color: #e8505b;
-  color:white;
+  color: white;
 }
 
-.cancel_by_me{
-  color:#e8505b;
+.cancel_by_me {
+  color: #e8505b;
 }
 
-.reserved_by_you{
-  color:#e6e6e6;
+.reserved_by_you {
+  color: #e6e6e6;
 }
 
-.tutors_schedule_page{
-  display:flex;
-  padding:60px;
+.tutors_schedule_page {
+  display: flex;
+  padding: 60px;
   padding-bottom: 30px;
   justify-content: space-between;
   flex-wrap: wrap;
 }
 
-
-.cancel_button{
-    background-color: #ff9234;  
-    border: none;
-    color: white;
-    padding: 13px 35px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    transition-duration: 0.4s;
+.cancel_button {
+  background-color: #ff9234;
+  border: none;
+  color: white;
+  padding: 13px 35px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
 }
 
-
-.cancel_button:hover{
-  background-color: #fdaf6a;  
+.cancel_button:hover {
+  background-color: #fdaf6a;
 }
 
-#tutor_full_name{
-  color:#e8505b;
+#tutor_full_name {
+  color: #e8505b;
 }
 
-.subject_tags{
-  display:flex;
+.subject_tags {
+  display: flex;
   flex-direction: column;
   font-size: 28px;
 }
 
-.subject_tags_inner{
-  display:flex;
+.subject_tags_inner {
+  display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  margin-top:10px;
+  margin-top: 10px;
 }
 
-.inner_subject_tags{
-  background-color: #fd5e53;  
+.inner_subject_tags {
+  background-color: #fd5e53;
   border: none;
   color: white;
   padding: 15px 32px;
@@ -442,11 +441,11 @@
   margin-right: 10px;
 }
 
-.tutors_schedule_inner_page{
-  display:flex;
+.tutors_schedule_inner_page {
+  display: flex;
 }
 
-.tutoring_session_name_photo{
+.tutoring_session_name_photo {
   display: flex;
   width: auto;
   gap: 20px;
@@ -464,61 +463,64 @@
 //   outline: none;
 // }
 
-.previous_tutoring_sessions{
-  padding:20px;
-  display:flex;
-  justify-content: space-between;;
-  color:white;
+.previous_tutoring_sessions {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  color: white;
   align-content: center;
-  background-color:#393e46 ;
+  background-color: #393e46;
   margin-top: 40px;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3);
-  h4{
-    color:#87cfd8;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
+  h4 {
+    color: #87cfd8;
   }
 }
 
-.navbar_man{
+.navbar_man {
   font-size: 19px;
   list-style-type: none;
   display: flex;
   background-color: #1b262c;
-  a{
+  a {
     font-size: 18px;
     display: block;
-  color: white;
-  text-align: center;
-  padding: 17px 26px;
-  text-decoration: none;
+    color: white;
+    text-align: center;
+    padding: 17px 26px;
+    text-decoration: none;
   }
-  a:hover{
-  background-color: #00bcd4;
-  text-decoration: none;
+  a:hover {
+    background-color: #00bcd4;
+    text-decoration: none;
   }
 
-  .logout{
+  .logout {
     background-color: #eb4559;
   }
 }
 
-#logotutor{
+#logotutor {
   margin-right: 20px;
 }
 
-
-.ourlogo{
-  font-family: 'Open Sans', sans-serif;
+.ourlogo {
+  font-family: "Open Sans", sans-serif;
   font-weight: 800;
-  color:#eb4559;
+  color: #eb4559;
 }
 
-.form_container_edit{
+.form_container_edit {
   display: flex;
   width: 60%;
-  
+
   flex-direction: column;
-  gap:30px;
-  input[type=text],input[type=password],input[type=number], select, textarea{
+  gap: 30px;
+  input[type="text"],
+  input[type="password"],
+  input[type="number"],
+  select,
+  textarea {
     width: auto;
     padding: 12px;
     border: 1px solid #ccc;
@@ -526,105 +528,101 @@
     box-sizing: border-box;
     resize: vertical;
     border: none;
-}
+  }
 }
 
-.user_auth{
+.user_auth {
   flex-direction: column;
   align-content: left;
-  div{
+  div {
     display: flex;
     flex-direction: column;
     margin-bottom: 15px;
     width: 100%;
-    
   }
 }
 
-.forms_centering{
+.forms_centering {
   position: relative;
-  top:50%;
-  left:20%;
-  margin-bottom:40px;
+  top: 50%;
+  left: 20%;
+  margin-bottom: 40px;
   // transform: translate(-50%,-50%);
-  h1{
-    color:#eb4559;
+  h1 {
+    color: #eb4559;
   }
 
-  input:focus{
+  input:focus {
     outline: none;
     background-color: #ff847c;
-    color:white;
+    color: white;
   }
 }
 
-.edit_text_form{
-margin-bottom:60px;
-background-color:#f0efef;
-text-align:center;
-padding:25px;
-box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
+.edit_text_form {
+  margin-bottom: 60px;
+  background-color: #f0efef;
+  text-align: center;
+  padding: 25px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 
-.flash_notices{
-  color:white;
-  text-align:center ;
-  background-color:#eb4559 ;
-  padding:20px;
+.flash_notices {
+  color: white;
+  text-align: center;
+  background-color: #eb4559;
+  padding: 20px;
 }
 
-
-.errors_flash{
-  background-color:#eb4559 ;
+.errors_flash {
+  background-color: #eb4559;
   text-align: center;
   list-style: none;
-  margin-left:auto;
-  color:white;
-  padding:15px;
-  margin-right:30px;
-  
+  margin-left: auto;
+  color: white;
+  padding: 15px;
+  margin-right: 30px;
 }
 
-#errors_flash{
-  background-color:#eb4559 ;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
+#errors_flash {
+  background-color: #eb4559;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
   margin-top: -60px;
 }
-
 
 ::placeholder {
   color: rgb(197, 197, 197);
 }
 
-.city_state_filter{
-  input[type=text],input[type=password]{
-  width: auto;
-  padding: 5px;
-  background-color: #e8e4e1;
-  border: 2px solid rgb(109, 109, 109);
-  border-radius: 1px;
-  box-sizing: border-box;
-  resize: vertical;
-  border: none;
+.city_state_filter {
+  input[type="text"],
+  input[type="password"] {
+    width: auto;
+    padding: 5px;
+    background-color: #e8e4e1;
+    border: 2px solid rgb(109, 109, 109);
+    border-radius: 1px;
+    box-sizing: border-box;
+    resize: vertical;
+    border: none;
+  }
+  input:focus {
+    outline: none;
+    background-color: #ff847c;
+    color: white;
+  }
 }
-input:focus{
-  outline: none;
-  background-color: #ff847c;
-  color:white;
-}
-}
-
-
 
 .flip-card1 {
   flex: 0 0 auto;
   margin: 20px;
-  margin-bottom:40px;
+  margin-bottom: 40px;
   background-color: transparent;
   width: 200px;
   height: 230px;
   border: 2px;
-  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  perspective: 1000px;
+  cursor: pointer; /* Remove this if you don't want the 3D effect */
 }
 
 /* This container is needed to position the front and back side */
@@ -641,24 +639,25 @@ input:focus{
 /* Do an horizontal flip when you move the mouse over the flip box container */
 .flip-card1:hover .flip-card-inner1 {
   transform: rotateY(180deg);
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 
 /* Position the front and back side */
-.flip-card-front1, .flip-card-back1 {
+.flip-card-front1,
+.flip-card-back1 {
   position: absolute;
   width: 100%;
   height: 100%;
   -webkit-backface-visibility: hidden; /* Safari */
   backface-visibility: hidden;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 
 /* Style the front side (fallback if image is missing) */
 .flip-card-front1 {
-  background-color: #fbf9fa;;
+  background-color: #fbf9fa;
   color: black;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 }
 
 /* Style the back side */
@@ -666,16 +665,16 @@ input:focus{
   background-color: #fd5e53;
   color: white;
   transform: rotateY(180deg);
-  padding:30px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
-}   
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
+}
 
-.tutors_flexes1{
+.tutors_flexes1 {
   width: 100%;
-  padding:35px;
+  padding: 35px;
   margin-top: 10px;
   display: flex;
   flex-wrap: nowrap;
@@ -683,97 +682,94 @@ input:focus{
   /* margin: -20px 0 0 0; */
 }
 
-.container_for_tutors{
+.container_for_tutors {
   margin-top: 20px;
   box-shadow: inset 0 8px 16px 0 rgba(0, 0, 0, 0.5);
   background-color: #1b262c;
 }
 
-.tutors_your_city{
-  display:flex;
-  background-color:#fbf9fa;
-  padding:0px 30px;
+.tutors_your_city {
+  display: flex;
+  background-color: #fbf9fa;
+  padding: 0px 30px;
   justify-content: space-between;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.1);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.1);
 
-  h4{
-    font-family: 'Open Sans', sans-serif;
-    align-self:center;
-    padding:15px;
+  h4 {
+    font-family: "Open Sans", sans-serif;
+    align-self: center;
+    padding: 15px;
     margin-bottom: 0px;
-    color:#dd2c00;
+    color: #dd2c00;
   }
-  p{
-    
-    color:#bbbbbb;
+  p {
+    color: #bbbbbb;
     font-size: 26px;
     margin-bottom: 0px;
-    padding:15px;
-    font-family: 'Open Sans', sans-serif;
+    padding: 15px;
+    font-family: "Open Sans", sans-serif;
   }
 }
 
-.tutors_names1
-{
+.tutors_names1 {
   font-size: 16px;
-   padding:10px;
-  color:#1b262c;
+  padding: 10px;
+  color: #1b262c;
   background-color: #fbf9fa;
 }
 
-.make_available{
-  background-color: #a1c45c;  
-    border: none;
-    color: white;
-    padding: 13px 35px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    transition-duration: 0.4s;
+.make_available {
+  background-color: #a1c45c;
+  border: none;
+  color: white;
+  padding: 13px 35px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
 }
 
-.make_available:hover{
-  background-color: #bfe673;  
+.make_available:hover {
+  background-color: #bfe673;
 }
 
-.make_unavailable{
-  background-color: #aaaaaa;  
-    border: none;
-    color: white;
-    padding: 13px 35px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    transition-duration: 0.4s;
+.make_unavailable {
+  background-color: #aaaaaa;
+  border: none;
+  color: white;
+  padding: 13px 35px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
 }
 
-.make_unavailable:hover{
-  background-color: #979797;  
+.make_unavailable:hover {
+  background-color: #979797;
 }
 
-
-.notifications{
+.notifications {
   display: flex;
   background-color: #fd5e53;
-  padding:15px;
-  color:white;
+  padding: 15px;
+  color: white;
   text-align: center;
   margin-right: 20px;
-    margin-left:10px;
-    margin-bottom:5px;
-  p{
-    margin:auto;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  p {
+    margin: auto;
   }
-  a{
-    border-radius: 10rem;
-    padding:3px;
-    border:solid #fbf9fa;
+  a {
+    border-radius: 50%;
+    padding: 3px;
+    padding-right: 8px;
+    padding-left: 8px;
+    border: solid #fbf9fa;
     font-family: "Open Sans";
-    color:black;
+    color: black;
     font-weight: 700;
   }
 }
-
-
