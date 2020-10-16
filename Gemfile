@@ -24,6 +24,8 @@ gem 'city-state'
 gem 'bcrypt', '~> 3.1.7'
 gem "simple_calendar", "~> 2.0"
 
+gem "actionview", ">= 6.0.3.3"
+
 gem 'bootstrap', '~> 4.5.0'
 
 # Use Active Storage variant
