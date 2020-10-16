@@ -9,51 +9,44 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
     <% if session[:user_id]%>
-    <ul class="navbar_man">
-        <li id="logotutor"><a href="<%= tutors_path %>">Tutor<span class="ourlogo">Free</span></a></li>
+      <ul class="navbar_man">
+        <li id="logotutor"><a href="<%= tutors_path %>">Learn<span class="ourlogo">Connect</span></a></li>
         <li><%= link_to "Home", tutors_path %></li>
         <li><%= link_to "My Page", current_user %></li>
         <li class="logout" style="margin-left:auto;"><%=link_to "Log Out", user_logout_path , method: :delete%></li>
-        
-    </ul>
+      </ul>
     <% elsif session[:tutor_id] %>
-    <ul class="navbar_man">
-        <li id="logotutor"><a href="<%= my_page_path(current_tutor) %>">Tutor<span class="ourlogo">Free</span></a></li>
+      <ul class="navbar_man">
+        <li id="logotutor"><a href="<%= my_page_path(current_tutor) %>">Learn<span class="ourlogo">Connect</span></a></li>
         <li><%= link_to "My Page", my_page_path(current_tutor) %></li>
         <li class="logout" style="margin-left:auto;"><%=link_to "Log Out", logout_path , method: :delete%></li>
-    </ul>
+      </ul>
     <% end%>
-
-
-
-      <% if current_tutor %>
-            <% if current_tutor.photo.attached? %>
-                <%= link_to my_page_path(current_tutor) do %>
-                <img class="thumbnailphoto" src="<%= (url_for(current_tutor.photo)) %>" alt="Avatar">
-                <% end %>
-            <% else%>
-                <%= link_to my_page_path(current_tutor) do %>
-                  <img class="thumbnailphoto" src="https://fertilitynetworkuk.org/wp-content/uploads/2017/01/Facebook-no-profile-picture-icon-620x389.jpg" alt="Avatar">
-                <% end %>
-            <% end%>
-      <% elsif current_user%>
-            <% if current_user.photo.attached? %>
-                  <%= link_to current_user do %>
-                    <img class="thumbnailphoto" src="<%= (url_for(current_user.photo)) %>" alt="Avatar">
-                    <% end %>
-            <% else%>
-                <%= link_to current_user do %>
-                  <img class="thumbnailphoto" src="https://fertilitynetworkuk.org/wp-content/uploads/2017/01/Facebook-no-profile-picture-icon-620x389.jpg" alt="Avatar">
-                <% end%>
-            <% end%>
+    <% if current_tutor %>
+      <% if current_tutor.photo.attached? %>
+        <%= link_to my_page_path(current_tutor) do %>
+          <img class="thumbnailphoto" src="<%= (url_for(current_tutor.photo)) %>" alt="Avatar">
+        <% end %>
+      <% else%>
+        <%= link_to my_page_path(current_tutor) do %>
+          <img class="thumbnailphoto" src="https://fertilitynetworkuk.org/wp-content/uploads/2017/01/Facebook-no-profile-picture-icon-620x389.jpg" alt="Avatar">
+        <% end %>
       <% end%>
-  
-    
+    <% elsif current_user%>
+      <% if current_user.photo.attached? %>
+        <%= link_to current_user do %>
+          <img class="thumbnailphoto" src="<%= (url_for(current_user.photo)) %>" alt="Avatar">
+        <% end %>
+      <% else%>
+        <%= link_to current_user do %>
+          <img class="thumbnailphoto" src="https://fertilitynetworkuk.org/wp-content/uploads/2017/01/Facebook-no-profile-picture-icon-620x389.jpg" alt="Avatar">
+        <% end%>
+      <% end%>
+    <% end%>
     <main>
-    <%= yield %>
+      <%= yield %>
     </main>
   </body>
 </html>
