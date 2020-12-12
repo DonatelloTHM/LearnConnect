@@ -1,4 +1,4 @@
-# Zen Pen
+# LearnConnect
 [Demo](https://www.youtube.com/watch?v=E7Rskdz5tn8)
 
 LearnConnect is a platform that connects learners to volunteer instructors;
